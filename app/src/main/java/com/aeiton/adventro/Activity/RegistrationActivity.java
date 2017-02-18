@@ -210,7 +210,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 //TODO: get latitude and logitude from 'ChooseLocationActivity'
                 enteredData.put("lat", "" + "12.554554554559");//TODO: latitude
                 enteredData.put("long", "" + "12.995995995994");//TODO: longitude
-                enteredData.put("address", "" + gender); //TODO: address
+                enteredData.put("address", "" + "Test address"); //TODO: address
                 // address is retrived from the obtained location
                 //jonathan added ends
 
