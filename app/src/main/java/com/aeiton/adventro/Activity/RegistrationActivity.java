@@ -47,6 +47,8 @@ public class RegistrationActivity extends AppCompatActivity {
     TextView title;
     Button register_btn;
     ImageButton img_upload;
+    ArrayAdapter<String> gender_adapter;
+    Spinner gender;
 
 
     HashMap<String, String> enteredData = new HashMap<String, String>();
@@ -82,6 +84,24 @@ public class RegistrationActivity extends AppCompatActivity {
         profile.clear();
         profile.commit();
 
+
+
+
+        //initializing proffession spinner
+
+        gender = (Spinner) findViewById(R.id.spnr_gender);
+        final List<String> code = new ArrayList<String>();
+
+
+        code.add("Choose Gender");
+        code.add("Male");
+        code.add("Female");
+        code.add("Other");
+
+
+        gender_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, code);
+        gender_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(gender_adapter);
 
 
 
@@ -132,6 +152,13 @@ public class RegistrationActivity extends AppCompatActivity {
                     password.setError("Minimum 6 characters", null);
                     password.requestFocus();
                     register_btn.startAnimation(shake);
+                    return;
+
+                }else if(gender.getSelectedItemPosition() == 0){
+
+
+                    Toast.makeText(getApplicationContext(), "Please choose a gender", Toast.LENGTH_SHORT).show();
+                    gender.startAnimation(shake);
                     return;
 
                 } else if (!accept.isChecked()) {
