@@ -13,11 +13,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="bb047f3b08506733ee66f1586ae65a6262667148"/>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDVBVOHJxJ53aLe3BvFghWhIH_UfyMsP5s"/>
@@ -31,7 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.RegistrationActivity"></activity>
+        <activity android:name=".Activity.RegistrationActivity"/>
+        <activity android:name=".Activity.JournalActivity">
+        </activity>
+        <activity android:name=".Activity.ChooseLocationActivity"/>
     </application>
 
 </manifest>

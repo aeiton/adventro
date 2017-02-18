@@ -160,8 +160,6 @@ public class RegistrationActivity extends AppCompatActivity {
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if (name.getText().toString().length() < 5 || !checkname(name.getText().toString())) {
 
                     name.setError("Full name required");
@@ -218,13 +216,8 @@ public class RegistrationActivity extends AppCompatActivity {
                         break;
                 }
 
-                //code below this is not in this activity
-                //TODO: get latitude and logitude from 'ChooseLocationActivity'
-                enteredData.put("lat", "" + "12.554554554559");//TODO: latitude
-                enteredData.put("long", "" + "12.995995995994");//TODO: longitude
-                enteredData.put("address", "" + "Test address"); //TODO: address
-                // address is retrived from the obtained location
-                sendEnteredData();
+
+                startActivityForResult(new Intent(RegistrationActivity.this, ChooseLocationActivity.class), GET_LOCATION_REQUEST);
             }
         });
     }
@@ -302,7 +295,24 @@ public class RegistrationActivity extends AppCompatActivity {
      * Saves the UserDetails into SharedPrefs
      */
     private void saveToSharedPrefs() {
-        // TODO: save to sharedprefs
+        /* {"name": "name here", "user_id": "user id here", "} */
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name", UserDetails.getInstance().getName());
+            jsonObject.put("user_id", UserDetails.getInstance().getUser_id());
+
+            String sharedPrefData = jsonObject.toString();
+
+            sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_LOGIN_KEY, Context.MODE_PRIVATE);
+            editor = sharedPreferences.edit();
+
+            editor.putString(Constants.LOGIN_KEY, sharedPrefData);
+            editor.commit();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -338,34 +348,39 @@ public class RegistrationActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
         /* PickImage request goes here */
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
-            try {
-                //Getting the Bitmap from Gallery
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+        if (requestCode == PICK_IMAGE_REQUEST) {
+            if (resultCode == RESULT_OK && data != null && data.getData() != null) {
+                Uri filePath = data.getData();
+                try {
+                    //Getting the Bitmap from Gallery
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
 
-                SharedPreferences.Editor profile = getSharedPreferences("profile", MODE_PRIVATE).edit();
-                profile.putString("propic", filePath.toString());
-                profile.commit();
+                    SharedPreferences.Editor profile = getSharedPreferences("profile", MODE_PRIVATE).edit();
+                    profile.putString("propic", filePath.toString());
+                    profile.commit();
 
-                // Setting the Bitmap to ImageView
-                propic.setImageBitmap(bitmap);
+                    // Setting the Bitmap to ImageView
+                    propic.setImageBitmap(bitmap);
 
-                // decode the bitmap as soon as you get it
-                new DecodeImageTask().execute(bitmap);
+                    // decode the bitmap as soon as you get it
+                    new DecodeImageTask().execute(bitmap);
 
-            } catch (IOException e) {
-                e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        } else if (requestCode == GET_LOCATION_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                double latitude = data.getDoubleExtra("lat", 12.65656565);
+                double longitude = data.getDoubleExtra("long", 12.656565);
 
-        /* Get location activity goes here */
-        if (requestCode == GET_LOCATION_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            // get the location and set it into the HashMap<>
-            return;
+                enteredData.put("lat", String.valueOf(latitude));
+                enteredData.put("long", String.valueOf(longitude));
+                enteredData.put("address", "Test Address. Skipped for now"); //TODO: address
+
+                sendEnteredData();
+            }
         }
     }
 
