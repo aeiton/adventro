@@ -8,18 +8,50 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+<<<<<<< HEAD
     <include
         layout="@layout/app_bar_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+=======
+
+    <include
+        layout="@layout/activity_home_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+
+>>>>>>> 816a06fd7ac6eb1e8eae7d65825edb9b5b929ae1
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+<<<<<<< HEAD
         app:headerLayout="@layout/nav_header_home"
         app:menu="@menu/activity_home_drawer" />
+=======
+        android:background="@color/NavBg"
+        app:itemTextColor="@color/WhiteShade"
+        app:itemIconTint="@color/WhiteShade"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/menu_student_drawer" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GeekTribe © 2017"
+            android:textColor="@color/WhiteShade"
+            android:layout_gravity="bottom|center"
+            android:textSize="10sp"
+            android:alpha="0.5"
+            android:layout_marginBottom="10dp"/>
+    </android.support.design.widget.NavigationView>
+
+>>>>>>> 816a06fd7ac6eb1e8eae7d65825edb9b5b929ae1
 
 </android.support.v4.widget.DrawerLayout>

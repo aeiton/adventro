@@ -5,36 +5,31 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aeiton.adventro.Constants;
 import com.aeiton.adventro.R;
-import com.aeiton.adventro.UserDetails;
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,16 +37,18 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private final String TAG = "RegistrationActivity";
 
     CheckBox accept;
     Animation shake;
     ProgressDialog pd;
 
+
     CircleImageView propic;
     TextView title;
     Button register_btn;
     ImageButton img_upload;
+    ArrayAdapter<String> gender_adapter;
+    Spinner gender;
 
 
     HashMap<String, String> enteredData = new HashMap<String, String>();
@@ -68,22 +65,17 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Registration");
+
         name = (EditText) findViewById(R.id.etxt_name);
         email = (EditText) findViewById(R.id.etxt_email);
 
         accept = (CheckBox) findViewById(R.id.accept);
         phone = (EditText) findViewById(R.id.etxt_phone);
-
-        if (getIntent().getStringExtra("phone") != null) {
-            String PhoneNumber = getIntent().getStringExtra("phone");
-            phone.setText(PhoneNumber);
-        }
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
-        getSupportActionBar().setTitle("Registration");
 
         shake = AnimationUtils.loadAnimation(this, R.anim.shakeanim);
 
@@ -91,6 +83,28 @@ public class RegistrationActivity extends AppCompatActivity {
         final SharedPreferences.Editor profile = getSharedPreferences("profile", MODE_PRIVATE).edit();
         profile.clear();
         profile.commit();
+
+
+
+
+        //initializing proffession spinner
+
+        gender = (Spinner) findViewById(R.id.spnr_gender);
+        final List<String> code = new ArrayList<String>();
+
+
+        code.add("Choose Gender");
+        code.add("Male");
+        code.add("Female");
+        code.add("Other");
+
+
+        gender_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, code);
+        gender_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(gender_adapter);
+
+
+
 
         //Profile Picture
         propic = (CircleImageView) findViewById(R.id.profile_image);
@@ -103,6 +117,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 startActivityForResult(i, PICK_IMAGE_REQUEST);
             }
         });
+
+
 
 
 
@@ -131,11 +147,12 @@ public class RegistrationActivity extends AppCompatActivity {
                     phone.requestFocus();
                     phone.startAnimation(shake);
                     return;
-                } else if (password.getText().length() < 6) {
+                }
+                else if(gender.getSelectedItemPosition() == 0){
 
-                    password.setError("Minimum 6 characters", null);
-                    password.requestFocus();
-                    register_btn.startAnimation(shake);
+
+                    Toast.makeText(getApplicationContext(), "Please choose a gender", Toast.LENGTH_SHORT).show();
+                    gender.startAnimation(shake);
                     return;
 
                 } else if (!accept.isChecked()) {
@@ -148,15 +165,23 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
                 {
-                    // set the Instance Data
-                    UserDetails.getInstance().setEmail(email.getText().toString());
-                    UserDetails.getInstance().setName(name.getText().toString());
+
+//
+//                    pd = new ProgressDialog(RegistrationActivity.this);
+//                    pd.setMessage("Creating Account..");
+//                    pd.show();
+
+                    //adding data to the hashmap cz it'll be easy to get a json data out of it
+
 
                     enteredData.put("Name", name.getText().toString().trim());
                     enteredData.put("EmailId", email.getText().toString().trim());
                     enteredData.put("Password", password.getText().toString());
                     enteredData.put("Mobile", "" + phone.getText().toString());
-                    enteredData.put("id", UserDetails.getInstance().getPhone());
+
+//                    register();
+                    startActivity(new Intent(RegistrationActivity.this,ChooseLocationActivity.class));
+                    //save everything in a singleton and then we can upload everything in a go after getting location in the next ACTIVITY
                 }
 
 
@@ -183,8 +208,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 //Getting the Bitmap from Gallery
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
 
-                SharedPreferences.Editor profile = getSharedPreferences(Constants.PROFILE_SHARED_PREF_KEY, MODE_PRIVATE).edit();
-                profile.putString(Constants.PROFILE_KEY, filePath.toString());
+                SharedPreferences.Editor profile = getSharedPreferences("profile", MODE_PRIVATE).edit();
+                profile.putString("propic", filePath.toString());
                 profile.commit();
                 //Setting the Bitmap to ImageView
                 propic.setImageBitmap(bitmap);
@@ -194,24 +219,5 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     }
 
-    private void sendData() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "URL HERE", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Response: " + response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                return enteredData;
-            }
-        };
 
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        Volley.newRequestQueue(this).add(stringRequest);
-    }
 }
