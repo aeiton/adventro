@@ -25,15 +25,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="0dp">
+        android:theme="@style/toolbar"
+        app:elevation="0dp"
+        android:background="#ffffff">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            app:popupTheme="@style/toolbar"
+            android:background="#ffffff">
 
         </android.support.v7.widget.Toolbar>
 

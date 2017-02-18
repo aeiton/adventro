@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/pro_pic"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_profile_pic"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Jhon Abraham"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:tint="#c0c0c0"
+                            android:src="@drawable/ic_invite_tag"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:id="@+id/location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#c0c0c0"
+                            android:text="Travel Journal"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:scaleType="fitXY"
+                    android:background="#ffffff"
+                    android:src="@drawable/ic_map_placeholder"
+                    android:tint="@color/colorPrimary"/>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_placeholder"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000000"
+                    android:alpha="0.3"></FrameLayout>
+
+                <TextView
+                    android:id="@+id/title"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="15dp"
+                    android:textColor="#ffffff"
+                    android:text="Sample Title of the Journal to be given here"/>
+
+            </FrameLayout>
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#c0c0c0"
+                android:alpha="0.3"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <ImageButton
+                    android:id="@+id/btn_like"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@color/tw__transparent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_liked" />
+
+                <TextView
+                    android:id="@+id/like_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="17sp" />
+
+                <ImageButton
+                    android:id="@+id/btn_comment"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:background="@color/tw__transparent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_comment" />
+
+                <TextView
+                    android:id="@+id/comment_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:alpha="0.5"
+                    android:gravity="right"
+                    android:text="05/12/16 09:30am" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
