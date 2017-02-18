@@ -8,14 +8,16 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.aeiton.adventro.R;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.ui.PlacePicker;
+//import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+//import com.google.android.gms.common.GooglePlayServicesRepairableException;
+//import com.google.android.gms.location.places.ui.PlacePicker;
+import com.googlecode.placesapiclient.client.entity.Place;
 
 public class ChooseLocationActivity extends AppCompatActivity {
 
     int PLACE_PICKER_REQUEST = 1;
-    com.google.android.gms.location.places.Place place;
+// com.google.android.gms.location.places.Place place;
+    Place place;
 
     Button chooseLocation;
 
@@ -24,34 +26,34 @@ public class ChooseLocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_location);
 
-        chooseLocation = (Button) findViewById(R.id.choose_location);
-        chooseLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-
-                try {
-                    startActivityForResult(builder.build(ChooseLocationActivity.this), PLACE_PICKER_REQUEST);
-                } catch (GooglePlayServicesNotAvailableException | GooglePlayServicesRepairableException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+//        chooseLocation = (Button) findViewById(R.id.choose_location);
+//        chooseLocation.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+//
+//                try {
+//                    startActivityForResult(builder.build(ChooseLocationActivity.this), PLACE_PICKER_REQUEST);
+//                } catch (GooglePlayServicesNotAvailableException | GooglePlayServicesRepairableException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == RESULT_OK) {
-                com.google.android.gms.location.places.Place place = PlacePicker.getPlace(data, this);
-                this.place = place;
-                String toastMsg = String.format("Place: %s", place.getName());
-                Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
-//                startActivity(new Intent(ChooseLocationActivity.this,HomeActivity.class));
-
-                Intent intent = new Intent(ChooseLocationActivity.this, HomeActivity .class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+//                com.google.android.gms.location.places.Place place = PlacePicker.getPlace(data, this);
+//                this.place = place;
+//                String toastMsg = String.format("Place: %s", place.getName());
+//                Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
+////                startActivity(new Intent(ChooseLocationActivity.this,HomeActivity.class));
+//
+//                Intent intent = new Intent(ChooseLocationActivity.this, HomeActivity .class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
             }
         }
     }

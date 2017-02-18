@@ -4,25 +4,6 @@
     android:layout_height="wrap_content"
     android:background="#ffffff">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_margin="10dp"
-            android:layout_gravity="center_vertical"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:tint="#c0c0c0"
-            android:src="@drawable/ic_invite_tag"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Travel collaboration Invite"
-            android:padding="15dp"
-            android:textColor="#c0c0c0"/>
-
-    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -78,7 +59,7 @@
     </LinearLayout>
     
     <ImageView
-        android:id="@+id/img"
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:src="@drawable/img_placeholder_map"
@@ -88,6 +69,26 @@
         android:layout_height="1dp"
         android:background="#c0c0c0"
         android:alpha="0.3"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:tint="#c0c0c0"
+            android:src="@drawable/ic_invite_tag"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Travel collaboration Invite"
+            android:padding="15dp"
+            android:textColor="#c0c0c0"/>
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/btn_join"
         android:layout_width="match_parent"

@@ -8,8 +8,8 @@
     android:layout_margin="0dp"
     android:background="#ffffff"
     android:orientation="vertical"
-    android:layout_marginTop="3dp"
-    android:layout_marginBottom="3dp">
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,12 +50,28 @@
                         android:textSize="15sp"
                         android:text="Jhon Abraham"/>
 
-                    <TextView
-                        android:id="@+id/location"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#c0c0c0"
-                        android:text="Sahyadri college of Enggineering"/>
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:tint="#c0c0c0"
+                            android:src="@drawable/ic_invite_tag"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:id="@+id/location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#c0c0c0"
+                            android:text="Travel Journal"/>
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -88,6 +104,7 @@
                     android:alpha="0.3"></FrameLayout>
 
                 <TextView
+                    android:id="@+id/title"
                     android:textSize="25sp"
                     android:gravity="center"
                     android:layout_width="wrap_content"
@@ -101,17 +118,6 @@
 
 
 
-            <TextView
-                android:id="@+id/txt_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="3dp"
-                android:maxLines="5"
-                android:paddingBottom="15dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="7dp"
-                android:text="" />
 
             <View
                 android:layout_width="match_parent"
