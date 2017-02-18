@@ -36,23 +36,19 @@ import io.fabric.sdk.android.Fabric;
 
 public class SplashActivity extends AppCompatActivity {
 
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "qLqbl3IixfIPrX6CjFKwzkwDk";
+    private static final String TWITTER_SECRET = "NzZC5FkGUBzvcvG4CA8nvlh1KmX7x2wJx3ebY7VECiJyd5PffQ";
+    /* Tag of Activity */
+    private final String TAG = "SplashActivity";
     private TwitterAuthClient client;
     private Button signIn;
     private TextView mobile;
     private Context context;
     private EditText phoneNumberEdit;
     private String phoneNumber;
-
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
-    /* Tag of Activity */
-    private final String TAG = "SplashActivity";
-
-    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "qLqbl3IixfIPrX6CjFKwzkwDk";
-    private static final String TWITTER_SECRET = "NzZC5FkGUBzvcvG4CA8nvlh1KmX7x2wJx3ebY7VECiJyd5PffQ";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +85,7 @@ public class SplashActivity extends AppCompatActivity {
                         phoneNumberEdit.requestFocus();
                     } else {
                         phoneNumber = phoneNumberEdit.getText().toString();
-                        Log.d(TAG, "Phone: " + phoneNumber);
+
 
                     /* Authentication here */
                         AuthConfig.Builder builder = new AuthConfig.Builder()
@@ -100,7 +96,7 @@ public class SplashActivity extends AppCompatActivity {
 
                                 // set the phone number
                                 UserDetails.getInstance().setPhone(phoneNumber);
-
+                                Log.d(TAG, "Phone: " + phoneNumber);
                                 Intent i = new Intent(SplashActivity.this, RegistrationActivity.class);
                                 i.putExtra("phone", phoneNumber);
 
