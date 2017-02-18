@@ -7,8 +7,12 @@ package com.aeiton.adventro;
 public class Constants {
     public static final String SHARED_PREF_LOGIN_KEY = "SharedPrefLogin";
     public static final String LOGIN_KEY = "login";
+    public static final String PROFILE_SHARED_PREF_KEY = "profile";
+    public static final String PROFILE_KEY = "propic";
 
 
     // Urls
     public static final String PHONENUM_VERIFY_URL = "http://legall.co.in/adventro/check_users.php";
+
+
 }

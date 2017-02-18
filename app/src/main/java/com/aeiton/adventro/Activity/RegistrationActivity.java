@@ -20,10 +20,20 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aeiton.adventro.Constants;
 import com.aeiton.adventro.R;
+import com.aeiton.adventro.UserDetails;
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -57,16 +67,21 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Registration");
-
         name = (EditText) findViewById(R.id.etxt_name);
         email = (EditText) findViewById(R.id.etxt_email);
         accept = (CheckBox) findViewById(R.id.accept);
         phone = (EditText) findViewById(R.id.etxt_phone);
+
+        if (getIntent().getStringExtra("phone") != null) {
+            String PhoneNumber = getIntent().getStringExtra("phone");
+            phone.setText(PhoneNumber);
+        }
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Registration");
 
         shake = AnimationUtils.loadAnimation(this, R.anim.shakeanim);
 
@@ -92,10 +107,7 @@ public class RegistrationActivity extends AppCompatActivity {
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if (name.getText().toString().length() < 5 || !checkname(name.getText().toString())) {
-
                     name.setError("Full name required");
                     name.requestFocus();
                     register_btn.startAnimation(shake);
@@ -126,35 +138,20 @@ public class RegistrationActivity extends AppCompatActivity {
                     return;
 
                 }
-
-
                 {
-
-//
-//                    pd = new ProgressDialog(RegistrationActivity.this);
-//                    pd.setMessage("Creating Account..");
-//                    pd.show();
-
-                    //adding data to the hashmap cz it'll be easy to get a json data out of it
-
+                    // set the Instance Data
+                    UserDetails.getInstance().setEmail(email.getText().toString());
 
                     enteredData.put("Name", name.getText().toString().trim());
                     enteredData.put("EmailId", email.getText().toString().trim());
                     enteredData.put("Password", password.getText().toString());
                     enteredData.put("Mobile", "" + phone.getText().toString());
-
-//                    register();
-
-                    //save everything in a singleton and then we can upload everything in a go after getting location in the next ACTIVITY
+                    enteredData.put("id", UserDetails.getInstance().getPhone());
                 }
-
 
             }
         });
-
-
     }
-
 
     public boolean checkname(String id) {
         Pattern p = Pattern.compile("[a-zA-Z\\s]*");
@@ -172,8 +169,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 //Getting the Bitmap from Gallery
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
 
-                SharedPreferences.Editor profile = getSharedPreferences("profile", MODE_PRIVATE).edit();
-                profile.putString("propic", filePath.toString());
+                SharedPreferences.Editor profile = getSharedPreferences(Constants.PROFILE_SHARED_PREF_KEY, MODE_PRIVATE).edit();
+                profile.putString(Constants.PROFILE_KEY, filePath.toString());
                 profile.commit();
                 //Setting the Bitmap to ImageView
                 propic.setImageBitmap(bitmap);
@@ -183,5 +180,25 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     }
 
+    private void sendData() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "URL HERE", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return super.getParams();
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
 }

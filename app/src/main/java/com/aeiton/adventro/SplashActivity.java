@@ -84,36 +84,41 @@ public class SplashActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     // get the phone number from text field
-                    phoneNumber = phoneNumberEdit.getText().toString();
-                    Log.d(TAG, "Phone: " + phoneNumber);
+                    if (phoneNumberEdit.getText().toString().isEmpty() || phoneNumberEdit.getText() == null) {
+                        phoneNumberEdit.setError("Invalid Phone number");
+                        phoneNumberEdit.requestFocus();
+                    } else {
+                        phoneNumber = phoneNumberEdit.getText().toString();
+                        Log.d(TAG, "Phone: " + phoneNumber);
 
                     /* Authentication here */
-                    AuthConfig.Builder builder = new AuthConfig.Builder()
-                            .withPhoneNumber(phoneNumber);
-                    builder.withAuthCallBack(new AuthCallback() {
-                        @Override
-                        public void success(DigitsSession session, String phoneNumber) {
+                        AuthConfig.Builder builder = new AuthConfig.Builder()
+                                .withPhoneNumber(phoneNumber);
+                        builder.withAuthCallBack(new AuthCallback() {
+                            @Override
+                            public void success(DigitsSession session, String phoneNumber) {
 
-                            // set the phone number
-                            UserDetails.getInstance().setPhone(phoneNumber);
+                                // set the phone number
+                                UserDetails.getInstance().setPhone(phoneNumber);
 
-                            Intent i = new Intent(SplashActivity.this, RegistrationActivity.class);
-                            i.putExtra("phone", phoneNumber);
+                                Intent i = new Intent(SplashActivity.this, RegistrationActivity.class);
+                                i.putExtra("phone", phoneNumber);
 
-                            Toast.makeText(SplashActivity.this, phoneNumber, Toast.LENGTH_SHORT).show();
-                            startActivity(i);
-                        }
+                                Toast.makeText(SplashActivity.this, phoneNumber, Toast.LENGTH_SHORT).show();
+                                startActivity(i);
+                            }
 
-                        @Override
-                        public void failure(DigitsException error) {
-                            // Do something
-                            error.printStackTrace();
-                            Toast.makeText(SplashActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void failure(DigitsException error) {
+                                // Do something
+                                error.printStackTrace();
+                                Toast.makeText(SplashActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
-                    AuthConfig authConfig = builder.build();
-                    Digits.authenticate(authConfig);
+                        AuthConfig authConfig = builder.build();
+                        Digits.authenticate(authConfig);
+                    }
                 }
             });
         }
@@ -134,7 +139,7 @@ public class SplashActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.PHONENUM_VERIFY_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                Log.d(TAG, "Response: " + response);
             }
         }, new Response.ErrorListener() {
             @Override
