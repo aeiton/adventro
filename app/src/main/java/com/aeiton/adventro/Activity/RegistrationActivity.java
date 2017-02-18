@@ -5,31 +5,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aeiton.adventro.R;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -71,7 +65,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         name = (EditText) findViewById(R.id.etxt_name);
         email = (EditText) findViewById(R.id.etxt_email);
-
         accept = (CheckBox) findViewById(R.id.accept);
         phone = (EditText) findViewById(R.id.etxt_phone);
 
@@ -81,10 +74,6 @@ public class RegistrationActivity extends AppCompatActivity {
         final SharedPreferences.Editor profile = getSharedPreferences("profile", MODE_PRIVATE).edit();
         profile.clear();
         profile.commit();
-
-
-
-
 
         //Profile Picture
         propic = (CircleImageView) findViewById(R.id.profile_image);
@@ -97,10 +86,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 startActivityForResult(i, PICK_IMAGE_REQUEST);
             }
         });
-
-
-
-
 
         //Registration Button
         register_btn = (Button) findViewById(R.id.register);

@@ -91,6 +91,7 @@
                             android:textSize="20sp"
                             android:maxLength="10"
                             android:inputType="phone"
+                            android:id="@+id/edit_phonenumber"
                             android:textColor="@color/colorPrimary"
                             android:hint="Mobile Number"
                             android:background="#00000000"
