@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aeiton.adventro.Activity.HomeActivity;
 import com.aeiton.adventro.Activity.RegistrationActivity;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -69,8 +70,9 @@ public class SplashActivity extends AppCompatActivity {
             Else Goto registration
           */
         if (checkForPreviousLogin()) {
-            Toast.makeText(context, "Test: Already Logged in", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(SplashActivity.this, RegistrationActivity.class));
+            Toast.makeText(this, "Test: Already Logged in", Toast.LENGTH_SHORT).show();
+            SplashActivity.this.finish();
+            startActivity(new Intent(SplashActivity.this, HomeActivity.class));
         } else {
 
             //initializing twitter digits

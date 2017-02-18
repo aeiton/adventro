@@ -30,9 +30,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.RegistrationActivity"/>
-        <activity android:name=".Activity.JournalActivity">
+        <activity android:name=".Activity.HomeActivity"/>
+        <activity
+            android:name=".Activity.JournalActivity"
+            android:parentActivityName=".Activity.HomeActivity">
+
         </activity>
         <activity android:name=".Activity.ChooseLocationActivity"/>
+        <activity android:name=".Activity.CreateNewPost"/>
     </application>
 
 </manifest>

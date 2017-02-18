@@ -24,18 +24,18 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:paddingTop="5dp"
         android:theme="@style/toolbar"
-        app:elevation="0dp"
-        android:background="#ffffff">
+        app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="#ffffff"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/toolbar"
-            android:background="#ffffff">
+            app:popupTheme="@style/toolbar">
 
         </android.support.v7.widget.Toolbar>
 

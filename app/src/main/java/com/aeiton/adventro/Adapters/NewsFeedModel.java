@@ -6,18 +6,17 @@ package com.aeiton.adventro.Adapters;
 
 public class NewsFeedModel {
 
-    private String name, caption, location, title;
     int propic, img, like, comment;
     Boolean likeStatus = false;
     Double lat, lng;
-
     int type;
+    private String name, caption, location, title;
 
-    public NewsFeedModel(){
+    public NewsFeedModel() {
 
     }
 
-    public NewsFeedModel(int type, String name,   String location ,String caption, int propic, int img, int like, int comment, Double lat, Double lng){
+    public NewsFeedModel(int type, String name, String location, String caption, int propic, int img, int like, int comment, Double lat, Double lng) {
 
         this.type = type;
         this.name = name;
@@ -31,7 +30,7 @@ public class NewsFeedModel {
         this.location = location;
     }
 
-    public NewsFeedModel(int type, String name, String title, int propic, int image, int like, int comment ){
+    public NewsFeedModel(int type, String name, String title, int propic, int image, int like, int comment) {
 
         this.type = type;
 
@@ -44,7 +43,7 @@ public class NewsFeedModel {
 
     }
 
-    public NewsFeedModel(int type, String name, String location, int propic, int like, int comment, Double lat, Double lng ){
+    public NewsFeedModel(int type, String name, String location, int propic, int like, int comment, Double lat, Double lng) {
 
         this.type = type;
 
@@ -90,10 +89,11 @@ public class NewsFeedModel {
         return likeStatus;
     }
 
-    public void likePost(){
+    public void likePost() {
         likeStatus = true;
     }
-    public void unlikePost(){
+
+    public void unlikePost() {
         likeStatus = false;
     }
 

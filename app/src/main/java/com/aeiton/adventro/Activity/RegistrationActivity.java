@@ -218,6 +218,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
                 startActivityForResult(new Intent(RegistrationActivity.this, ChooseLocationActivity.class), GET_LOCATION_REQUEST);
+                //// FIXME: 19-Feb-17
+                enteredData.put("lat", "12.66666666");
+                enteredData.put("long", "12.6666666");
+               /* enteredData.put("lat", String.valueOf(latitude));
+                enteredData.put("long", String.valueOf(longitude));*/
+                enteredData.put("address", "Test Address. Skipped for now"); //TODO: address
+
+                sendEnteredData();
             }
         });
     }
@@ -321,6 +329,9 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.d("FCM RESP", response);
+
+                // goto HomeActivity
+                startActivity(new Intent(RegistrationActivity.this, HomeActivity.class));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -374,12 +385,6 @@ public class RegistrationActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 double latitude = data.getDoubleExtra("lat", 12.65656565);
                 double longitude = data.getDoubleExtra("long", 12.656565);
-
-                enteredData.put("lat", String.valueOf(latitude));
-                enteredData.put("long", String.valueOf(longitude));
-                enteredData.put("address", "Test Address. Skipped for now"); //TODO: address
-
-                sendEnteredData();
             }
         }
     }

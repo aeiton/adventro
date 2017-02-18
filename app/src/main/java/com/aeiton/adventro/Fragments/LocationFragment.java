@@ -19,7 +19,7 @@ public class LocationFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static NewsFeedFragment newInstance(){
+    public static NewsFeedFragment newInstance() {
         NewsFeedFragment fragment = new NewsFeedFragment();
         return fragment;
     }

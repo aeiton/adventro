@@ -8,7 +8,6 @@ import com.aeiton.adventro.Fragments.LocationFragment;
 import com.aeiton.adventro.Fragments.NewsFeedFragment;
 
 
-
 /**
  * Created by User on 10-Jan-17.
  */
@@ -22,7 +21,7 @@ public class StudentHomeFragmentAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        switch (position){
+        switch (position) {
             case 0:
                 return NewsFeedFragment.newInstance();
             case 1:
