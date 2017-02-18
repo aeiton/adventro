@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/login_bg"
+        android:src="@drawable/login_bg_new"
         android:scaleType="centerCrop"/>
 
 
@@ -21,7 +21,7 @@
         android:textColor="#ffffff"
         android:padding="10dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:text="GeekTribe © 2017"
+        android:text="Adventro © 2017"
         android:alpha="0.5"/>
 
     <FrameLayout
