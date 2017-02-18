@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.aeiton.adventro.Constants;
 import com.aeiton.adventro.R;
+import com.aeiton.adventro.UserDetails;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -191,12 +192,19 @@ public class RegistrationActivity extends AppCompatActivity {
                 enteredData.put("mobile_no", "" + phone.getText().toString());
 
                 //jonathan added begins
-                enteredData.put("sex", "" + gender);
 
-                encodeImage();
-
-                //set this bitmap to any imageView
-                // propic.setImageBitmap(bitmap);
+                // set the gender
+                switch (gender.getSelectedItemPosition()) {
+                    case 1:
+                        enteredData.put("sex", "M");
+                        break;
+                    case 2:
+                        enteredData.put("sex", "F");
+                        break;
+                    case 3:
+                        enteredData.put("sex", "O");
+                        break;
+                }
 
                 //code below this is not in this activity
                 //TODO: get latitude and logitude from 'ChooseLocationActivity'
@@ -212,9 +220,6 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    private void encodeImage() {
-
-    }
 
     private void sendEnteredData() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -236,7 +241,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     String msg = jsonObject.getString("message");
                     if (resp.equals("3")) {
                         Toast.makeText(RegistrationActivity.this, msg, Toast.LENGTH_SHORT).show();
-                        // todo: goto home activity
+
+                        // we are supposed to get user_id if successful
+                        String userId = jsonObject.getString("user_id");
+                        UserDetails.getInstance().setUser_id(userId);
+
                     } else {
                         // Ignore other cases
                         Toast.makeText(RegistrationActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -285,7 +294,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 profile.putString("propic", filePath.toString());
                 profile.commit();
 
-                //Setting the Bitmap to ImageView
+                // Setting the Bitmap to ImageView
                 propic.setImageBitmap(bitmap);
 
                 // decode the bitmap as soon as you get it
@@ -299,6 +308,7 @@ public class RegistrationActivity extends AppCompatActivity {
         /* Get location activity goes here */
         if (requestCode == GET_LOCATION_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             // get the location and set it into the HashMap<>
+            return;
         }
     }
 

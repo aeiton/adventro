@@ -9,6 +9,24 @@ public class UserDetails {
 
     private String name, email, phone, gender, latitude, lat_t, longitude, long_t;
 
+    private String user_id;
+
+    // Return only one instance of class
+    public static UserDetails getInstance() {
+        if (instance == null) {
+            instance = new UserDetails();
+        }
+        return instance;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String id) {
+        instance.user_id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -71,13 +89,5 @@ public class UserDetails {
 
     public void setLong_t(String long_t) {
         instance.long_t = long_t;
-    }
-
-    // Return only one instance of class
-    public static UserDetails getInstance() {
-        if (instance == null) {
-            instance = new UserDetails();
-        }
-        return instance;
     }
 }
