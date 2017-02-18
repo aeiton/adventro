@@ -147,14 +147,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     phone.requestFocus();
                     phone.startAnimation(shake);
                     return;
-                } else if (password.getText().length() < 6) {
-
-                    password.setError("Minimum 6 characters", null);
-                    password.requestFocus();
-                    register_btn.startAnimation(shake);
-                    return;
-
-                }else if(gender.getSelectedItemPosition() == 0){
+                }
+                else if(gender.getSelectedItemPosition() == 0){
 
 
                     Toast.makeText(getApplicationContext(), "Please choose a gender", Toast.LENGTH_SHORT).show();
@@ -182,7 +176,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     enteredData.put("Name", name.getText().toString().trim());
                     enteredData.put("EmailId", email.getText().toString().trim());
-                    enteredData.put("Password", password.getText().toString());
                     enteredData.put("Mobile", "" + phone.getText().toString());
 
 //                    register();

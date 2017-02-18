@@ -12,8 +12,8 @@
     tools:context="com.aeiton.adventro.Activity.ChooseLocationActivity">
 
     <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:src="@drawable/img_back_btn"
         android:scaleType="fitXY"
         android:background="#00ffffff"
