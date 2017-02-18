@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#4caf50</color>
     <color name="colorPrimaryDark">#43a047</color>
-    <color name="colorAccent">#26c6da</color>
+    <color name="colorAccent">#4caf50</color>
     <color name="lightText">#e0f7fa</color>
     <color name="DeactiveGrey">#78909c</color>
     <color name="editTextHint">#90a4ae</color>
