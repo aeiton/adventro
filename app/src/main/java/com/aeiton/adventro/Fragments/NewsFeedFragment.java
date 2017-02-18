@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.aeiton.adventro.Activity.RegistrationActivity;
 import com.aeiton.adventro.Adapters.NewsFeedAdapter;
 import com.aeiton.adventro.Adapters.NewsFeedModel;
+import com.aeiton.adventro.Adapters.TimeLineListAdapter;
+import com.aeiton.adventro.Model.FeedTimeLineModel;
 import com.aeiton.adventro.R;
 
 import java.util.ArrayList;
@@ -27,6 +29,11 @@ public class NewsFeedFragment extends Fragment {
     RecyclerView newsFeed;
     private NewsFeedAdapter mAdapter;
     private ArrayList<NewsFeedModel> feed = new ArrayList<>();
+
+
+    RecyclerView timeline;
+    private TimeLineListAdapter mtAdapter;
+    private ArrayList<FeedTimeLineModel> timelineMOdel = new ArrayList<>();
 
     public NewsFeedFragment() {
         // Required empty public constructor
@@ -44,8 +51,30 @@ public class NewsFeedFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_news_feed, container, false);
 
-        newsFeed = (RecyclerView) rootView.findViewById(R.id.recycler);
+        timeline = (RecyclerView) rootView.findViewById(R.id.timeline_recycler);
 
+        mtAdapter = new TimeLineListAdapter(timelineMOdel);
+        RecyclerView.LayoutManager mhLayoutManager = new LinearLayoutManager(rootView.getContext(),LinearLayoutManager.HORIZONTAL,false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        timeline.setLayoutManager(mhLayoutManager);
+        timeline.setAdapter(mtAdapter);
+
+        timelineMOdel.add(new FeedTimeLineModel("Musthaq Ahamad",R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
+
+        mtAdapter.notifyDataSetChanged();
+
+
+        newsFeed = (RecyclerView) rootView.findViewById(R.id.recycler);
         mAdapter = new NewsFeedAdapter(feed);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(rootView.getContext());
         newsFeed.setLayoutManager(mLayoutManager);

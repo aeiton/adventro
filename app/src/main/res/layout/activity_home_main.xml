@@ -18,6 +18,53 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:src="@drawable/ic_add_post"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/FABphoto"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="90dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/cyan_gradient_solid_circle"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_fab_photo"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/FABjournal"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="160dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/cyan_gradient_solid_circle"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_fab_journal"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/FABinvite"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="230dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/cyan_gradient_solid_circle"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_fab_invite"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/FABtimeline"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="300dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/cyan_gradient_solid_circle"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_fab_timeline"/>
+
+
+
+
 
 
     <android.support.design.widget.AppBarLayout

@@ -16,6 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import com.aeiton.adventro.Fragments.NewsFeedFragment;
 import com.aeiton.adventro.Fragments.UserHomeFragment;
@@ -28,6 +31,7 @@ public class HomeActivity extends AppCompatActivity
     static Toolbar toolbar;
     boolean doublepressonce = false;
     int fragmentStatus = 0;
+    boolean fabOpen = false;
 
 
     FragmentManager fragmentManager;
@@ -35,7 +39,9 @@ public class HomeActivity extends AppCompatActivity
     Class fragmentClass;
     static Context context;
 
-    FloatingActionButton fab;
+    Animation rotate_forward, rotate_backward;
+
+    FloatingActionButton fab, fab_photo, fab_journal, fab_timeline, fab_invite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,10 @@ public class HomeActivity extends AppCompatActivity
         getSupportActionBar().setTitle("Adventro");
 
         context = HomeActivity.this;
+
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
+
 
 
 
@@ -104,10 +114,55 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,CreateNewPost.class));
+
+                Toast.makeText(HomeActivity.this,"on it",Toast.LENGTH_SHORT).show();
+
+                if (fabOpen){
+                    hideFabs();
+                    fab.startAnimation(rotate_forward);
+                    fabOpen = false;
+                }else{
+
+                    openFabs();
+                    fab.startAnimation(rotate_backward);
+                    fabOpen = true;
+
+                }
             }
         });
 
+        fab_invite = (FloatingActionButton) findViewById(R.id.FABinvite);
+        fab_invite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
+        fab_photo = (FloatingActionButton) findViewById(R.id.FABjournal);
+        fab_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        fab_journal = (FloatingActionButton) findViewById(R.id.FABtimeline);
+        fab_journal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        fab_timeline = (FloatingActionButton) findViewById(R.id.FABphoto);
+        fab_timeline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        hideFabs();
         showFab();
 
 
@@ -185,6 +240,21 @@ public class HomeActivity extends AppCompatActivity
     }
     public static void changeTitle(String title) {
         toolbar.setTitle(title);
+    }
+
+    public void openFabs(){
+
+        fab_invite.show();
+        fab_journal.show();
+        fab_timeline.show();
+        fab_photo.show();
+    }
+
+    public void hideFabs(){
+        fab_invite.hide();
+        fab_timeline.hide();
+        fab_journal.hide();
+        fab_photo.hide();
     }
 
 }
