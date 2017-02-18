@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aeiton.adventro.Constants;
+import com.aeiton.adventro.NetworkSingleton;
 import com.aeiton.adventro.R;
 import com.aeiton.adventro.UserDetails;
 import com.android.volley.AuthFailureError;
@@ -35,7 +37,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,6 +82,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private StringRequest stringRequest;
     private Context mContext;
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,6 +191,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     return;
                 }
 
+                /* Set the data in the instance variable */
+                UserDetails.getInstance().setEmail(email.getText().toString().trim());
+                UserDetails.getInstance().setName(name.getText().toString().trim());
+                UserDetails.getInstance().setPhone(phone.getText().toString());
+
                 enteredData.put("name", name.getText().toString().trim());
                 enteredData.put("email", email.getText().toString().trim());
                 enteredData.put("mobile_no", "" + phone.getText().toString());
@@ -197,12 +206,15 @@ public class RegistrationActivity extends AppCompatActivity {
                 switch (gender.getSelectedItemPosition()) {
                     case 1:
                         enteredData.put("sex", "M");
+                        UserDetails.getInstance().setGender("M");
                         break;
                     case 2:
                         enteredData.put("sex", "F");
+                        UserDetails.getInstance().setGender("F");
                         break;
                     case 3:
                         enteredData.put("sex", "O");
+                        UserDetails.getInstance().setGender("O");
                         break;
                 }
 
@@ -212,9 +224,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 enteredData.put("long", "" + "12.995995995994");//TODO: longitude
                 enteredData.put("address", "" + "Test address"); //TODO: address
                 // address is retrived from the obtained location
-                //jonathan added ends
-
-                // send the entered data
                 sendEnteredData();
             }
         });
@@ -223,6 +232,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void sendEnteredData() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
         progressDialog.setTitle("Loading...");
         progressDialog.setIndeterminate(true);
         progressDialog.show();
@@ -246,6 +256,22 @@ public class RegistrationActivity extends AppCompatActivity {
                         String userId = jsonObject.getString("user_id");
                         UserDetails.getInstance().setUser_id(userId);
 
+                        // save to sharedPrefs
+                        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+                            @Override
+                            protected Void doInBackground(Void... params) {
+                                saveToSharedPrefs();
+                                return null;
+                            }
+
+                            @Override
+                            protected void onPostExecute(Void aVoid) {
+                                super.onPostExecute(aVoid);
+                            }
+                        });
+
+                        // send FCM token if successful
+                        sendFcm();
                     } else {
                         // Ignore other cases
                         Toast.makeText(RegistrationActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -269,9 +295,40 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         };
 
-        //startActivity(new Intent(RegistrationActivity.this, ChooseLocationActivity.class));
+        NetworkSingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
+    /**
+     * Saves the UserDetails into SharedPrefs
+     */
+    private void saveToSharedPrefs() {
+        // TODO: save to sharedprefs
+    }
+
+
+    private void sendFcm() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.FCM_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("FCM RESP", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<>();
+                params.put("user_id", UserDetails.getInstance().getUser_id());
+                params.put("token", FirebaseInstanceId.getInstance().getToken());
+                return params;
+            }
+        };
+
+        NetworkSingleton.getInstance(this).addToRequestQueue(stringRequest);
+    }
 
     public boolean checkname(String id) {
         Pattern p = Pattern.compile("[a-zA-Z\\s]*");
@@ -331,12 +388,14 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
         protected void onPostExecute(String encodedImage) {
             super.onPostExecute(encodedImage);
             enteredData.put("img", encodedImage); // upload image in the form of Base64 string
-
-            // send the request after decode complete
-            Volley.newRequestQueue(mContext).add(stringRequest);
         }
     }
 }

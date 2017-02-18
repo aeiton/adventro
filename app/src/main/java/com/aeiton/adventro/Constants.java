@@ -14,4 +14,5 @@ public class Constants {
     // Urls
     public static final String PHONENUM_VERIFY_URL = "http://legall.co.in/adventro/check_users.php";
     public static final String REG_URL = "http://legall.co.in/adventro/registration.php";
+    public static final String FCM_URL = "http://legall.co.in/adventro/fcm_tokens.php";
 }

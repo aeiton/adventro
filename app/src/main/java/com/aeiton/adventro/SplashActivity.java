@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class SplashActivity extends AppCompatActivity {
     private TextView mobile;
     private Context context;
     private EditText phoneNumberEdit;
+    private ImageView appIcon;
     private String phoneNumber;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -58,6 +60,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         signIn = (Button) findViewById(R.id.btn_sign_in);
         phoneNumberEdit = (EditText) findViewById(R.id.edit_phonenumber);
+        appIcon = (ImageView) findViewById(R.id.app_image);
+
 
         /*  Check for Previous login here
             Check SharedPrefs
