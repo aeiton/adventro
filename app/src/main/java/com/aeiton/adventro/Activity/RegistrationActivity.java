@@ -48,7 +48,6 @@ public class RegistrationActivity extends AppCompatActivity {
     Animation shake;
     ProgressDialog pd;
 
-
     CircleImageView propic;
     TextView title;
     Button register_btn;
@@ -71,6 +70,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         name = (EditText) findViewById(R.id.etxt_name);
         email = (EditText) findViewById(R.id.etxt_email);
+
         accept = (CheckBox) findViewById(R.id.accept);
         phone = (EditText) findViewById(R.id.etxt_phone);
 
@@ -104,12 +104,17 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+
+
         //Registration Button
         register_btn = (Button) findViewById(R.id.register);
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 if (name.getText().toString().length() < 5 || !checkname(name.getText().toString())) {
+
                     name.setError("Full name required");
                     name.requestFocus();
                     register_btn.startAnimation(shake);
@@ -140,6 +145,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     return;
 
                 }
+
+
                 {
                     // set the Instance Data
                     UserDetails.getInstance().setEmail(email.getText().toString());
@@ -151,9 +158,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     enteredData.put("Mobile", "" + phone.getText().toString());
                     enteredData.put("id", UserDetails.getInstance().getPhone());
                 }
+
+
             }
         });
+
+
     }
+
 
     public boolean checkname(String id) {
         Pattern p = Pattern.compile("[a-zA-Z\\s]*");

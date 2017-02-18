@@ -2,22 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aeiton.adventro">
 
-
-
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/adentro_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="bb047f3b08506733ee66f1586ae65a6262667148" />
 
-
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.RegistrationActivity"></activity>
+        <activity android:name=".Activity.RegistrationActivity" />
+        <activity android:name=".Activity.ChooseLocationActivity" />
+        <activity
+            android:name=".Activity.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
