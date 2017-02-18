@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aeiton.adventro">
 
-    <uses-permission android:name="android.permission.LOCATION_HARDWARE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.LOCATION_HARDWARE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/adentro_logo"
@@ -13,7 +14,6 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="bb047f3b08506733ee66f1586ae65a6262667148" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDVBVOHJxJ53aLe3BvFghWhIH_UfyMsP5s" />
@@ -32,7 +32,8 @@
         <activity
             android:name=".Activity.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.CreateNewPost"></activity>
     </application>
 
 </manifest>

@@ -47,6 +47,11 @@ public class ChooseLocationActivity extends AppCompatActivity {
                 this.place = place;
                 String toastMsg = String.format("Place: %s", place.getName());
                 Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
+//                startActivity(new Intent(ChooseLocationActivity.this,HomeActivity.class));
+
+                Intent intent = new Intent(ChooseLocationActivity.this, HomeActivity .class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         }
     }

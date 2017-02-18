@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aeiton.adventro.Activity.HomeActivity;
 import com.aeiton.adventro.Activity.RegistrationActivity;
 import com.digits.sdk.android.AuthCallback;
 import com.digits.sdk.android.AuthConfig;
@@ -40,6 +41,7 @@ public class SplashActivity extends AppCompatActivity {
         Fabric.with(this, new TwitterCore(authConfig), new Digits.Builder().build());
         setContentView(R.layout.activity_splash);
 
+        startActivity(new Intent(SplashActivity.this, HomeActivity.class));
         //initializing twitter digits
         Fabric.with(this, new TwitterCore(authConfig), new Digits.Builder().withTheme(R.style.AppTheme).build());
         client = new TwitterAuthClient();
