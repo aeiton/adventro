@@ -186,7 +186,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     enteredData.put("Mobile", "" + phone.getText().toString());
 
 //                    register();
-
+                    startActivity(new Intent(RegistrationActivity.this,ChooseLocationActivity.class));
                     //save everything in a singleton and then we can upload everything in a go after getting location in the next ACTIVITY
                 }
 
