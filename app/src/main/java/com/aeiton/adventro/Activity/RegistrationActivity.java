@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
@@ -41,6 +42,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegistrationActivity extends AppCompatActivity {
 
+    private final String TAG = "RegistrationActivity";
 
     CheckBox accept;
     Animation shake;
@@ -79,8 +81,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setTitle("Registration");
 
         shake = AnimationUtils.loadAnimation(this, R.anim.shakeanim);
@@ -141,6 +143,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 {
                     // set the Instance Data
                     UserDetails.getInstance().setEmail(email.getText().toString());
+                    UserDetails.getInstance().setName(name.getText().toString());
 
                     enteredData.put("Name", name.getText().toString().trim());
                     enteredData.put("EmailId", email.getText().toString().trim());
@@ -148,7 +151,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     enteredData.put("Mobile", "" + phone.getText().toString());
                     enteredData.put("id", UserDetails.getInstance().getPhone());
                 }
-
             }
         });
     }
@@ -184,17 +186,16 @@ public class RegistrationActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "URL HERE", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                Log.d(TAG, "Response: " + response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                return super.getParams();
+                return enteredData;
             }
         };
 
