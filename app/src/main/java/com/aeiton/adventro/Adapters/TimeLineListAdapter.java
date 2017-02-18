@@ -41,7 +41,6 @@ public class TimeLineListAdapter extends RecyclerView.Adapter<TimeLineListAdapte
             propic = (ImageView) view.findViewById(R.id.pro_pic);
             name = (TextView) view.findViewById(R.id.user_name);
 
-            Toast.makeText(view.getContext(),"here",Toast.LENGTH_SHORT).show();
             propic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

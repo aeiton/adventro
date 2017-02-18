@@ -33,7 +33,8 @@
             android:name=".Activity.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activity.CreateNewPost"></activity>
+        <activity android:name=".Activity.CreateNewPost" />
+        <activity android:name=".Activity.CreateTimeLine"></activity>
     </application>
 
 </manifest>

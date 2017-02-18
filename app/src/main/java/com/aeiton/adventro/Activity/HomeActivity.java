@@ -151,7 +151,7 @@ public class HomeActivity extends AppCompatActivity
         fab_journal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                    startActivity(new Intent(HomeActivity.this,CreateTimeLine.class));
             }
         });
         fab_timeline = (FloatingActionButton) findViewById(R.id.FABphoto);

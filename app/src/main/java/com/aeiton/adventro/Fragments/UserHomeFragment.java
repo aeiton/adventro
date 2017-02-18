@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aeiton.adventro.Activity.HomeActivity;
-import com.aeiton.adventro.Adapters.StudentHomeFragmentAdapter;
+import com.aeiton.adventro.Adapters.HomeFragmentAdapter;
 import com.aeiton.adventro.R;
 
 
@@ -28,7 +28,7 @@ public class UserHomeFragment extends Fragment {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private StudentHomeFragmentAdapter mStudentsHomeFragmentAdapter;
+    private HomeFragmentAdapter mStudentsHomeFragmentAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -53,7 +53,7 @@ public class UserHomeFragment extends Fragment {
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mStudentsHomeFragmentAdapter = new StudentHomeFragmentAdapter(getChildFragmentManager());
+        mStudentsHomeFragmentAdapter = new HomeFragmentAdapter(getChildFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) rootView.findViewById(R.id.container);

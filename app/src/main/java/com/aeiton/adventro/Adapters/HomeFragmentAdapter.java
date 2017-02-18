@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.aeiton.adventro.Fragments.LocationFragment;
+import com.aeiton.adventro.Fragments.NearbyLocation;
 import com.aeiton.adventro.Fragments.NewsFeedFragment;
 
 
@@ -13,9 +14,9 @@ import com.aeiton.adventro.Fragments.NewsFeedFragment;
  * Created by User on 10-Jan-17.
  */
 
-public class StudentHomeFragmentAdapter extends FragmentPagerAdapter {
+public class HomeFragmentAdapter extends FragmentPagerAdapter {
 
-    public StudentHomeFragmentAdapter(FragmentManager fm) {
+    public HomeFragmentAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -26,7 +27,7 @@ public class StudentHomeFragmentAdapter extends FragmentPagerAdapter {
             case 0:
                 return NewsFeedFragment.newInstance();
             case 1:
-                return LocationFragment.newInstance();
+                return NearbyLocation.newInstance();
             case 2:
                 return LocationFragment.newInstance();
             case 3:
