@@ -1,11 +1,13 @@
 package com.aeiton.adventro.Activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -71,12 +73,20 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText name, email, phone;
 
     private int PICK_IMAGE_REQUEST = 1;
+    private int GET_LOCATION_REQUEST = 2;
+    private boolean isDecoded = false;
+
+    private StringRequest stringRequest;
+    private Context mContext;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        /* Set the current context */
+        mContext = getApplicationContext();
 
         Intent intent = getIntent();
 
@@ -203,17 +213,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void encodeImage() {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.WEBP, 10, baos);
-        final String encodedImage = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
 
-        enteredData.put("img", encodedImage); // upload image in the form of Base64 string
-
-        //to decode image
-        byte[] decodeString = Base64.decode(encodedImage, Base64.DEFAULT);
-        //encodeImage is the string to be decoded
-        //encodeImage is in Base64 format
-        bitmap = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
     }
 
     private void sendEnteredData() {
@@ -221,7 +221,7 @@ public class RegistrationActivity extends AppCompatActivity {
         progressDialog.setTitle("Loading...");
         progressDialog.setIndeterminate(true);
         progressDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.REG_URL, new Response.Listener<String>() {
+        stringRequest = new StringRequest(Request.Method.POST, Constants.REG_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.i("Registration", response);
@@ -260,8 +260,6 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         };
 
-        Volley.newRequestQueue(this).add(stringRequest);
-        // if succesfull
         //startActivity(new Intent(RegistrationActivity.this, ChooseLocationActivity.class));
     }
 
@@ -276,6 +274,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        /* PickImage request goes here */
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri filePath = data.getData();
             try {
@@ -288,11 +287,46 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 //Setting the Bitmap to ImageView
                 propic.setImageBitmap(bitmap);
+
+                // decode the bitmap as soon as you get it
+                new DecodeImageTask().execute(bitmap);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
+        /* Get location activity goes here */
+        if (requestCode == GET_LOCATION_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            // get the location and set it into the HashMap<>
+        }
     }
 
+    /**
+     * Class to Decode Bitmap image to a base64 String
+     */
+    class DecodeImageTask extends AsyncTask<Bitmap, Void, String> {
+        @Override
+        protected String doInBackground(Bitmap... params) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            params[0].compress(Bitmap.CompressFormat.WEBP, 10, baos);
+            final String encodedImage = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
 
+            //to decode image
+            byte[] decodeString = Base64.decode(encodedImage, Base64.DEFAULT);
+            //encodeImage is the string to be decoded
+            //encodeImage is in Base64 format
+            params[0] = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
+            return encodedImage;
+        }
+
+        @Override
+        protected void onPostExecute(String encodedImage) {
+            super.onPostExecute(encodedImage);
+            enteredData.put("img", encodedImage); // upload image in the form of Base64 string
+
+            // send the request after decode complete
+            Volley.newRequestQueue(mContext).add(stringRequest);
+        }
+    }
 }
