@@ -69,7 +69,7 @@ public class NearbyPlacesAdapter extends RecyclerView.Adapter<NearbyPlacesAdapte
 
         holder.image.setImageResource(placesModel.getImgId());
         holder.title.setText(placesModel.getLocation());
-        holder.caption.setText(placesModel.getLocation());
+        holder.caption.setText(placesModel.getCaption());
         final Double lat = Double.parseDouble(placesModel.getLat().toString());
         final Double lng = Double.parseDouble(placesModel.getLng().toString());
 

@@ -7,9 +7,11 @@ package com.aeiton.adventro.Adapters;
 public class NewsFeedModel {
 
     private String name, caption, location, title;
-    int propic, img, like, comment;
+    int propic, img, like, comment, id;
     Boolean likeStatus = false;
     Double lat, lng;
+
+    String propics, images;
 
     int type;
 
@@ -34,7 +36,6 @@ public class NewsFeedModel {
     public NewsFeedModel(int type, String name, String title, int propic, int image, int like, int comment ){
 
         this.type = type;
-
         this.name = name;
         this.title = title;
         this.propic = propic;
@@ -44,10 +45,22 @@ public class NewsFeedModel {
 
     }
 
+    public NewsFeedModel(int type,int id, String name, String title, String propic, String image, int like, int comment ){
+
+        this.type = type;
+        this.id = id;
+        this.name = name;
+        this.title = title;
+        this.propics = propic;
+        this.like = like;
+        this.comment = comment;
+        this.images = image;
+
+    }
+
     public NewsFeedModel(int type, String name, String location, int propic, int like, int comment, Double lat, Double lng ){
 
         this.type = type;
-
         this.name = name;
         this.location = location;
         this.propic = propic;

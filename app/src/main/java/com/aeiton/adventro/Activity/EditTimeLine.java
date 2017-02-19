@@ -56,11 +56,11 @@ public class EditTimeLine extends AppCompatActivity {
         timeline.setAdapter(mAdapter);
 
 
-        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder));
-        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder));
-        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder));
-        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder));
-        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder));
+        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder_2));
+        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder_3));
+        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder_5));
+        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder_6));
+        timelineMOdel.add(new TimeLineModel("this is a sample timeline item","Here i am","26/07/2017",R.drawable.ic_profile_pic,R.drawable.img_placeholder_7));
 
         mAdapter.notifyDataSetChanged();
 
