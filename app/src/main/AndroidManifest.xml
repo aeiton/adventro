@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.aeiton.adventro">
+    package="com.aeiton.adventro">
 
-    <uses-permission android:name="android.permission.LOCATION_HARDWARE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.LOCATION_HARDWARE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,38 +13,33 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="bb047f3b08506733ee66f1586ae65a6262667148"/>
+            android:value="bb047f3b08506733ee66f1586ae65a6262667148" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDVBVOHJxJ53aLe3BvFghWhIH_UfyMsP5s"/>
+            android:value="AIzaSyDVBVOHJxJ53aLe3BvFghWhIH_UfyMsP5s" />
 
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.RegistrationActivity"/>
-        <activity android:name=".Activity.ChooseLocationActivity"/>
+        <activity android:name=".Activity.RegistrationActivity" />
+        <activity android:name=".Activity.ChooseLocationActivity" />
         <activity
             android:name=".Activity.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".Activity.CreateNewPost"/>
-        <activity android:name=".Activity.CreateTimeLine"/>
-        <activity android:name=".Activity.EditTimeLine"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.CreateNewPost" />
+        <activity android:name=".Activity.CreateTimeLine" />
+        <activity android:name=".Activity.EditTimeLine" />
         <activity
-            android:name=".Activity.JournalActivity"
-            android:parentActivityName=".Activity.HomeActivity"/>
-
-
-        <activity android:name=".Activity.PlacePickerActivity">
-        </activity>
-        <activity android:name=".Activity.SpotsActivity">
-        </activity>
+            android:name=".Activity.JournalView"
+            android:label="@string/title_activity_journal_view"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
