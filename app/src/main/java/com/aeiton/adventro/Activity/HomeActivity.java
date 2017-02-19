@@ -1,14 +1,11 @@
 package com.aeiton.adventro.Activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,11 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
-import com.aeiton.adventro.Fragments.NewsFeedFragment;
 import com.aeiton.adventro.Fragments.UserHomeFragment;
 import com.aeiton.adventro.R;
 
@@ -29,19 +26,20 @@ public class HomeActivity extends AppCompatActivity
 
 
     static Toolbar toolbar;
+    static Context context;
     boolean doublepressonce = false;
     int fragmentStatus = 0;
     boolean fabOpen = false;
-
-
     FragmentManager fragmentManager;
     Fragment fragment;
     Class fragmentClass;
-    static Context context;
-
     Animation rotate_forward, rotate_backward;
 
     FloatingActionButton fab, fab_photo, fab_journal, fab_timeline, fab_invite;
+
+    public static void changeTitle(String title) {
+        toolbar.setTitle(title);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +149,7 @@ public class HomeActivity extends AppCompatActivity
         fab_journal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    startActivity(new Intent(HomeActivity.this,CreateTimeLine.class));
+
             }
         });
         fab_timeline = (FloatingActionButton) findViewById(R.id.FABphoto);
@@ -185,7 +183,6 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -211,8 +208,6 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -237,9 +232,6 @@ public class HomeActivity extends AppCompatActivity
     public void showFab(){
         if (!fab.isShown())
             fab.show();
-    }
-    public static void changeTitle(String title) {
-        toolbar.setTitle(title);
     }
 
     public void openFabs(){

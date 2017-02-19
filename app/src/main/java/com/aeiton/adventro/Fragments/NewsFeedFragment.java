@@ -25,11 +25,9 @@ public class NewsFeedFragment extends Fragment {
 
 
     RecyclerView newsFeed;
+    RecyclerView timeline;
     private NewsFeedAdapter mAdapter;
     private ArrayList<NewsFeedModel> feed = new ArrayList<>();
-
-
-    RecyclerView timeline;
     private TimeLineListAdapter mtAdapter;
     private ArrayList<FeedTimeLineModel> timelineMOdel = new ArrayList<>();
 
@@ -52,7 +50,7 @@ public class NewsFeedFragment extends Fragment {
         timeline = (RecyclerView) rootView.findViewById(R.id.timeline_recycler);
 
         mtAdapter = new TimeLineListAdapter(timelineMOdel);
-        RecyclerView.LayoutManager mhLayoutManager = new LinearLayoutManager(rootView.getContext(),LinearLayoutManager.HORIZONTAL,false) {
+        RecyclerView.LayoutManager mhLayoutManager = new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -61,13 +59,13 @@ public class NewsFeedFragment extends Fragment {
         timeline.setLayoutManager(mhLayoutManager);
         timeline.setAdapter(mtAdapter);
 
-        timelineMOdel.add(new FeedTimeLineModel("Musthaq Ahamad",R.drawable.ic_profile_pic));
-        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
-        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
-        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
-        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
-        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
-        timelineMOdel.add(new FeedTimeLineModel("SomeOther ",R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("Musthaq Ahamad", R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ", R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ", R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ", R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ", R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ", R.drawable.ic_profile_pic));
+        timelineMOdel.add(new FeedTimeLineModel("SomeOther ", R.drawable.ic_profile_pic));
 
         mtAdapter.notifyDataSetChanged();
 

@@ -9,6 +9,9 @@ public class Constants {
     public static final String LOGIN_KEY = "login";
     public static final String PROFILE_SHARED_PREF_KEY = "profile";
     public static final String PROFILE_KEY = "propic";
+    public static final String USER_ID_KEY = "userid";
+
+    public static final String TempUser = "24";
 
 
     // Urls

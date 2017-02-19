@@ -5,34 +5,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aeiton.adventro.Activity.HomeActivity;
-import com.aeiton.adventro.Activity.RegistrationActivity;
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.digits.sdk.android.AuthCallback;
-import com.digits.sdk.android.AuthConfig;
 import com.digits.sdk.android.Digits;
-import com.digits.sdk.android.DigitsException;
-import com.digits.sdk.android.DigitsSession;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -64,13 +46,15 @@ public class SplashActivity extends AppCompatActivity {
         appIcon = (ImageView) findViewById(R.id.app_image);
 
 
+        startActivity(new Intent(this, HomeActivity.class));
         /*  Check for Previous login here
             Check SharedPrefs
             If Previously logged in, goto HomePage
             Else Goto registration
           */
-        if (checkForPreviousLogin()) {
+        /*if (checkForPreviousLogin()) {
             Toast.makeText(this, "Test: Already Logged in", Toast.LENGTH_SHORT).show();
+            getTheUserId();
             SplashActivity.this.finish();
             startActivity(new Intent(SplashActivity.this, HomeActivity.class));
         } else {
@@ -92,8 +76,7 @@ public class SplashActivity extends AppCompatActivity {
                     } else {
                         phoneNumber = phoneNumberEdit.getText().toString();
 
-
-                    /* Authentication here */
+                    *//* Authentication here *//*
                         AuthConfig.Builder builder = new AuthConfig.Builder()
                                 .withPhoneNumber(phoneNumber);
                         builder.withAuthCallBack(new AuthCallback() {
@@ -102,7 +85,12 @@ public class SplashActivity extends AppCompatActivity {
 
                                 // set the phone number
                                 UserDetails.getInstance().setPhone(phoneNumber);
+
                                 Log.d(TAG, "Phone: " + phoneNumber);
+                                sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_LOGIN_KEY, Context.MODE_PRIVATE);
+                                editor = sharedPreferences.edit();
+                                editor.putString(Constants.LOGIN_KEY, phoneNumber);
+                                editor.commit();
                                 Intent i = new Intent(SplashActivity.this, RegistrationActivity.class);
                                 i.putExtra("phone", phoneNumber);
 
@@ -126,9 +114,22 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
+    private void getTheUserId() {
+        String json = getSharedPreferences(Constants.PROFILE_SHARED_PREF_KEY, Context.MODE_PRIVATE).getString(Constants.LOGIN_KEY, "");
+        Log.d("json", json);
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            String user_id = jsonObject.getString("user_id");
+            Log.d("USER_ID", user_id);
+            UserDetails.getInstance().setUser_id(user_id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     private boolean checkForPreviousLogin() {
         sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_LOGIN_KEY, Context.MODE_PRIVATE);
-        if (sharedPreferences.contains(Constants.LOGIN_KEY)) {
+        if (sharedPreferences.contains(Constants.USER_ID_KEY)) {
             // user has previously logged in
             // get the phone number and send it to server for validation
             sendPhoneNumber(sharedPreferences.getString(Constants.LOGIN_KEY, ""));
@@ -161,4 +162,7 @@ public class SplashActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
+}
+*/
+    }
 }

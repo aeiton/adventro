@@ -216,16 +216,8 @@ public class RegistrationActivity extends AppCompatActivity {
                         break;
                 }
 
-
                 startActivityForResult(new Intent(RegistrationActivity.this, ChooseLocationActivity.class), GET_LOCATION_REQUEST);
-                //// FIXME: 19-Feb-17
-                enteredData.put("lat", "12.66666666");
-                enteredData.put("long", "12.6666666");
-               /* enteredData.put("lat", String.valueOf(latitude));
-                enteredData.put("long", String.valueOf(longitude));*/
-                enteredData.put("address", "Test Address. Skipped for now"); //TODO: address
 
-                sendEnteredData();
             }
         });
     }
@@ -314,7 +306,7 @@ public class RegistrationActivity extends AppCompatActivity {
             sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_LOGIN_KEY, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
 
-            editor.putString(Constants.LOGIN_KEY, sharedPrefData);
+            editor.putString(Constants.USER_ID_KEY, sharedPrefData);
             editor.commit();
 
         } catch (JSONException e) {
@@ -383,8 +375,18 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         } else if (requestCode == GET_LOCATION_REQUEST) {
             if (resultCode == RESULT_OK) {
-                double latitude = data.getDoubleExtra("lat", 12.65656565);
-                double longitude = data.getDoubleExtra("long", 12.656565);
+                double latitude = data.getDoubleExtra("latitude", 12.65656565);
+                double longitude = data.getDoubleExtra("longitude", 12.656565);
+                String address = data.getStringExtra("address");
+
+                Log.d("LAT", String.valueOf(latitude));
+                Log.d("LONG", String.valueOf(longitude));
+
+                enteredData.put("lat", String.valueOf(latitude));
+                enteredData.put("long", String.valueOf(longitude));
+                enteredData.put("address", address);
+
+                sendEnteredData();
             }
         }
     }

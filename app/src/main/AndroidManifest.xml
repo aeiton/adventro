@@ -34,10 +34,13 @@
         <activity
             android:name=".Activity.JournalActivity"
             android:parentActivityName=".Activity.HomeActivity">
-
         </activity>
         <activity android:name=".Activity.ChooseLocationActivity"/>
         <activity android:name=".Activity.CreateNewPost"/>
+        <activity android:name=".Activity.PlacePickerActivity">
+        </activity>
+        <activity android:name=".Activity.SpotsActivity">
+        </activity>
     </application>
 
 </manifest>

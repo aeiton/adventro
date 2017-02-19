@@ -1,5 +1,6 @@
 package com.aeiton.adventro.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -80,7 +81,7 @@ public class ChooseLocationActivity extends AppCompatActivity implements GoogleA
                 data.putExtra("long", mLocation.getLongitude());
 
                 Log.d("LOCATION", "LAT: " + mLocation.getLatitude() + " LONG: " + mLocation.getLongitude());
-                setResult(GET_LOCATION_REQUEST, data);
+                setResult(Activity.RESULT_OK, data);
                 ChooseLocationActivity.this.finish();
             }
         } catch (SecurityException e) {
