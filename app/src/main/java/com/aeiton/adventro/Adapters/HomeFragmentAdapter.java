@@ -30,8 +30,7 @@ public class HomeFragmentAdapter extends FragmentPagerAdapter {
                 return NearbyLocation.newInstance();
             case 2:
                 return LocationFragment.newInstance();
-            case 3:
-                return LocationFragment.newInstance();
+
         }
 
         return null;
@@ -39,6 +38,6 @@ public class HomeFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 }
