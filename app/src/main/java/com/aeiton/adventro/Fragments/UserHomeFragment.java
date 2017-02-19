@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aeiton.adventro.Activity.HomeActivity;
-import com.aeiton.adventro.Adapters.StudentHomeFragmentAdapter;
+import com.aeiton.adventro.Adapters.HomeFragmentAdapter;
 import com.aeiton.adventro.R;
 
 
@@ -20,9 +20,6 @@ import com.aeiton.adventro.R;
  */
 public class UserHomeFragment extends Fragment {
 
-    int unselectedIcon[] = {R.drawable.ic_homes_unselected, R.drawable.ic_locations_unselected, R.drawable.ic_groups_unselected, R.drawable.ic_posts_unselected};
-    int selectedIcon[] = {R.drawable.ic_home_selected, R.drawable.ic_location_selected, R.drawable.ic_groups_selected, R.drawable.ic_posts_selected};
-    String titles[] = {"Adventro", "Locations", "Groups", "Posts"};
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -31,11 +28,16 @@ public class UserHomeFragment extends Fragment {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private StudentHomeFragmentAdapter mStudentsHomeFragmentAdapter;
+    private HomeFragmentAdapter mStudentsHomeFragmentAdapter;
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
+    int unselectedIcon[] = {R.drawable.ic_homes_unselected, R.drawable.ic_locations_unselected, R.drawable.ic_groups_unselected, R.drawable.ic_posts_unselected};
+    int selectedIcon[] = {R.drawable.ic_home_selected, R.drawable.ic_location_selected, R.drawable.ic_groups_selected, R.drawable.ic_posts_selected};
+    String titles[] = {"Adventro", "Locations", "Groups", "Posts"};
 
     public UserHomeFragment() {
         // Required empty public constructor
@@ -51,7 +53,7 @@ public class UserHomeFragment extends Fragment {
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mStudentsHomeFragmentAdapter = new StudentHomeFragmentAdapter(getChildFragmentManager());
+        mStudentsHomeFragmentAdapter = new HomeFragmentAdapter(getChildFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) rootView.findViewById(R.id.container);
@@ -60,6 +62,7 @@ public class UserHomeFragment extends Fragment {
 
         final TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
 
 
         //setting the first tab as selected
