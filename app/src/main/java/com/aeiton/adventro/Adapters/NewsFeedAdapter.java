@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.aeiton.adventro.Activity.JournalView;
 import com.aeiton.adventro.Fragments.LocationFragment;
 import com.aeiton.adventro.R;
 
@@ -150,6 +151,8 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 vh1.like.setText(""+feedModel.getLike());
                 vh1.comment.setText(""+feedModel.getComment());
 
+
+
                 if (feedModel.getLikeStatus()){
                     vh1.likeBtn.setImageResource(R.drawable.ic_like);
                 }else {
@@ -187,6 +190,13 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 vh2.title.setText(feedModel.getTitle());
                 vh2.like.setText(""+feedModel.getLike());
                 vh2.comment.setText(""+feedModel.getComment());
+
+                vh2.image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        v.getContext().startActivity(new Intent(v.getContext(), JournalView.class));
+                    }
+                });
 
                 if (feedModel.getLikeStatus()){
                     vh2.likeBtn.setImageResource(R.drawable.ic_like);

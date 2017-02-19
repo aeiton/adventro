@@ -35,7 +35,11 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".Activity.CreateNewPost" />
         <activity android:name=".Activity.CreateTimeLine" />
-        <activity android:name=".Activity.EditTimeLine"></activity>
+        <activity android:name=".Activity.EditTimeLine" />
+        <activity
+            android:name=".Activity.JournalView"
+            android:label="@string/title_activity_journal_view"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

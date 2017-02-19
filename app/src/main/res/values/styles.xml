@@ -22,7 +22,9 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="scrollview.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="scrollview.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="tabTheme" parent="Theme.AppCompat.Light.NoActionBar">

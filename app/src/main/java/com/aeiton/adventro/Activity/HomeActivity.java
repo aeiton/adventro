@@ -115,8 +115,6 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(HomeActivity.this,"on it",Toast.LENGTH_SHORT).show();
-
                 if (fabOpen){
                     hideFabs();
                     fab.startAnimation(rotate_forward);
