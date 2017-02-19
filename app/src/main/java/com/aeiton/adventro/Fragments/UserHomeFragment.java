@@ -35,9 +35,8 @@ public class UserHomeFragment extends Fragment {
      */
     private ViewPager mViewPager;
 
-    int unselectedIcon[] = {R.drawable.ic_homes_unselected, R.drawable.ic_locations_unselected, R.drawable.ic_groups_unselected, R.drawable.ic_posts_unselected};
-    int selectedIcon[] = {R.drawable.ic_home_selected, R.drawable.ic_location_selected, R.drawable.ic_groups_selected, R.drawable.ic_posts_selected};
-    String titles[] = {"Adventro", "Locations", "Groups", "Posts"};
+    int unselectedIcon[] = {R.drawable.ic_homes_unselected, R.drawable.ic_locations_unselected, R.drawable.ic_posts_unselected};
+    int selectedIcon[] = {R.drawable.ic_home_selected, R.drawable.ic_location_selected, R.drawable.ic_posts_selected};
 
     public UserHomeFragment() {
         // Required empty public constructor
@@ -58,7 +57,7 @@ public class UserHomeFragment extends Fragment {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) rootView.findViewById(R.id.container);
         mViewPager.setAdapter(mStudentsHomeFragmentAdapter);
-        mViewPager.setOffscreenPageLimit(4);
+        mViewPager.setOffscreenPageLimit(3);
 
         final TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
@@ -69,7 +68,7 @@ public class UserHomeFragment extends Fragment {
         tabLayout.getTabAt(0).setIcon(selectedIcon[0]);
 
         //initially setting unselected icon for all the tabs
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < 3; i++) {
             tabLayout.getTabAt(i).setIcon(unselectedIcon[i]);
         }
 
@@ -92,7 +91,7 @@ public class UserHomeFragment extends Fragment {
                 tab.setIcon(selectedIcon[position]);
 //                HomeActivity.changeTitle(titles[position]);
 
-                for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < 3; i++) {
                     if (i != position) {
                         tabLayout.getTabAt(i).setIcon(unselectedIcon[i]);
                     }
