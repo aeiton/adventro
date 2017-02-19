@@ -2,8 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_create_spot"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Create Travel Spot"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_create_page"
+        android:orderInCategory="100"
+        android:title="Create Page"
+        app:showAsAction="never" />
+
 </menu>

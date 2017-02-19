@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.aeiton.adventro.Fragments.LocationFragment;
 import com.aeiton.adventro.Fragments.NearbyLocation;
 import com.aeiton.adventro.Fragments.NewsFeedFragment;
-
+import com.aeiton.adventro.Fragments.PostsFragment;
 
 
 /**
@@ -29,7 +29,7 @@ public class HomeFragmentAdapter extends FragmentPagerAdapter {
             case 1:
                 return NearbyLocation.newInstance();
             case 2:
-                return LocationFragment.newInstance();
+                return PostsFragment.newInstance();
 
         }
 
