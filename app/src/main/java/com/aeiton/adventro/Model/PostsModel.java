@@ -9,11 +9,11 @@ public class PostsModel {
     private String title;
     private int proPic;
 
-    public PostsModel(){
+    public PostsModel() {
 
     }
 
-    public PostsModel(String title, int proPic){
+    public PostsModel(String title, int proPic) {
 
         this.title = title;
         this.proPic = proPic;
@@ -24,12 +24,12 @@ public class PostsModel {
         return proPic;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public void setProPic(int proPic) {
         this.proPic = proPic;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {

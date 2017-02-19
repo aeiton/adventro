@@ -2,10 +2,12 @@ package com.aeiton.adventro.Fragments;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +15,19 @@ import android.view.ViewGroup;
 import com.aeiton.adventro.Adapters.NewsFeedAdapter;
 import com.aeiton.adventro.Adapters.NewsFeedModel;
 import com.aeiton.adventro.Adapters.TimeLineListAdapter;
+import com.aeiton.adventro.Constants;
 import com.aeiton.adventro.Model.FeedTimeLineModel;
+import com.aeiton.adventro.NetworkSingleton;
 import com.aeiton.adventro.R;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,6 +51,11 @@ public class NewsFeedFragment extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sendData();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,6 +109,31 @@ public class NewsFeedFragment extends Fragment {
 
 
         return rootView;
+    }
+
+    private void sendData() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.ADD_NODE_TIMELINE, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("REsponse", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> pa
+                        = new HashMap<>();
+                pa.put("user_id", 24 + "");
+                pa.put("page", "" + 0);
+                return pa;
+            }
+        };
+
+        NetworkSingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
     }
 
 }

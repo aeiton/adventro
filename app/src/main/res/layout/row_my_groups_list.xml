@@ -2,16 +2,16 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:id="@+id/main_content"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp">
+              android:id="@+id/main_content"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
+              android:foreground="?android:attr/selectableItemBackground"
+              android:orientation="vertical"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
+              android:paddingTop="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/pro_pic"
             android:layout_width="65dp"
-            android:layout_height="65dp" />
+            android:layout_height="65dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,14 +35,14 @@
                 android:id="@+id/post_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <TextView
                 android:id="@+id/caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TimeLine"
-                android:textColor="#c0c0c0" />
+                android:textColor="#c0c0c0"/>
 
         </LinearLayout>
 
@@ -60,13 +60,13 @@
                 android:layout_height="wrap_content"
                 android:text="128"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="25sp" />
+                android:textSize="25sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Views"
-                android:textColor="#c0c0c0" />
+                android:textColor="#c0c0c0"/>
 
 
         </LinearLayout>
@@ -79,6 +79,6 @@
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
         android:alpha="0.3"
-        android:background="#c0c0c0" />
+        android:background="#c0c0c0"/>
 </LinearLayout>
 

@@ -20,4 +20,8 @@ public class Constants {
     public static final String FCM_URL = "http://legall.co.in/adventro/fcm_tokens.php";
 
     public static final String JOURNAL_URL = "http://www.legall.co.in/adventro/create_journal.php";
+
+    public static final String CREATE_TIMELINE = "http://www.legall.co.in/adventro/create_journal.php";
+
+    public static final String ADD_NODE_TIMELINE = "http://legall.co.in/adventro/create_spots.php";
 }

@@ -20,6 +20,8 @@ import com.aeiton.adventro.R;
  */
 public class UserHomeFragment extends Fragment {
 
+    int unselectedIcon[] = {R.drawable.ic_homes_unselected, R.drawable.ic_locations_unselected, R.drawable.ic_posts_unselected};
+    int selectedIcon[] = {R.drawable.ic_home_selected, R.drawable.ic_location_selected, R.drawable.ic_posts_selected};
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -29,14 +31,10 @@ public class UserHomeFragment extends Fragment {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private HomeFragmentAdapter mStudentsHomeFragmentAdapter;
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-
-    int unselectedIcon[] = {R.drawable.ic_homes_unselected, R.drawable.ic_locations_unselected, R.drawable.ic_posts_unselected};
-    int selectedIcon[] = {R.drawable.ic_home_selected, R.drawable.ic_location_selected, R.drawable.ic_posts_selected};
 
     public UserHomeFragment() {
         // Required empty public constructor

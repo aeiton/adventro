@@ -42,7 +42,7 @@
             android:layout_gravity="center"
             android:elevation="4dp"
             android:fontFamily="sans-serif-light"
-            android:text="Add Cover Picture"
+            android:text="Add Photo"
             android:textColor="@color/tw__solid_white"
             android:textSize="40sp"/>
 

@@ -1,6 +1,7 @@
 package com.aeiton.adventro.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -51,10 +52,8 @@ public class HomeActivity extends AppCompatActivity
 
         context = HomeActivity.this;
 
-        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
-        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
-
-
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_backward);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -107,19 +106,18 @@ public class HomeActivity extends AppCompatActivity
         fragmentManager.beginTransaction().replace(R.id.content, fragment).commit();
 
 
-
         fab = (FloatingActionButton) findViewById(R.id.FAButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(HomeActivity.this,"on it",Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "on it", Toast.LENGTH_SHORT).show();
 
-                if (fabOpen){
+                if (fabOpen) {
                     hideFabs();
                     fab.startAnimation(rotate_forward);
                     fabOpen = false;
-                }else{
+                } else {
 
                     openFabs();
                     fab.startAnimation(rotate_backward);
@@ -138,25 +136,25 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        fab_photo = (FloatingActionButton) findViewById(R.id.FABjournal);
+        fab_photo = (FloatingActionButton) findViewById(R.id.FABphoto);
         fab_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
-        fab_journal = (FloatingActionButton) findViewById(R.id.FABtimeline);
+        fab_journal = (FloatingActionButton) findViewById(R.id.FABjournal);
         fab_journal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(HomeActivity.this, JournalActivity.class));
             }
         });
-        fab_timeline = (FloatingActionButton) findViewById(R.id.FABphoto);
+        fab_timeline = (FloatingActionButton) findViewById(R.id.FABtimeline);
         fab_timeline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(HomeActivity.this, CreateTimeLine.class));
             }
         });
 
@@ -223,18 +221,18 @@ public class HomeActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void hideFab(){
+    public void hideFab() {
 
         if (fab.isShown())
             fab.hide();
     }
 
-    public void showFab(){
+    public void showFab() {
         if (!fab.isShown())
             fab.show();
     }
 
-    public void openFabs(){
+    public void openFabs() {
 
         fab_invite.show();
         fab_journal.show();
@@ -242,7 +240,7 @@ public class HomeActivity extends AppCompatActivity
         fab_photo.show();
     }
 
-    public void hideFabs(){
+    public void hideFabs() {
         fab_invite.hide();
         fab_timeline.hide();
         fab_journal.hide();
