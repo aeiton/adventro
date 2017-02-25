@@ -6,7 +6,11 @@
              tools:context="com.aeiton.adventro.Fragments.NewsFeedFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+
+
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

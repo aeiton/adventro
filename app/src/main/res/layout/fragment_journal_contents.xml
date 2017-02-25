@@ -41,7 +41,7 @@
                     android:textColor="#c0c0c0"
                     android:textSize="17sp"
                     android:layout_marginLeft="20dp"
-                    android:text="LocationDetails, Goes here"/>
+                    android:text="Spiti Valley"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -53,7 +53,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:id="@+id/content"/>
+                android:id="@+id/content"
+                android:text="@string/placeholder"/>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

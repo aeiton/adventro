@@ -51,11 +51,10 @@ public class NearbyLocation extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        nearbyList.add(new NearbyPlacesModel("Example place name", "this place is really awesome", R.drawable.img_placeholder, 11.006655, 55.446665));
-        nearbyList.add(new NearbyPlacesModel("Example place name", "this place is really awesome", R.drawable.img_placeholder, 11.006655, 55.446665));
-        nearbyList.add(new NearbyPlacesModel("Example place name", "this place is really awesome", R.drawable.img_placeholder, 11.006655, 55.446665));
-        nearbyList.add(new NearbyPlacesModel("Example place name", "this place is really awesome", R.drawable.img_placeholder, 11.006655, 55.446665));
-        nearbyList.add(new NearbyPlacesModel("Example place name", "this place is really awesome", R.drawable.img_placeholder, 11.006655, 55.446665));
+         nearbyList.add(new NearbyPlacesModel("Adyar Falls","Adyar Falls the waterfall can be easily approached from two sides – i.e one from Neermarga on the road leading to Volachil and the ...",R.drawable.img_placeholder_5,11.006655,55.446665));
+         nearbyList.add(new NearbyPlacesModel("St Marys island","St. Mary's Islands, also known as Coconut Island and Thonsepar, are a set of four small islands in the Arabian Sea off the coast of Malpe in Udupi, Karnataka",R.drawable.img_placeholder_6,13.3795,74.6708113));
+         nearbyList.add(new NearbyPlacesModel("Kadri Park","Kadri Park is a garden, 5 min from the city near AIR studios. It is located in Kadri gudde. It's the largest park within city limits of Mangalore. The park has beautifully laid garden and a toy train which is currently not operatinal.",R.drawable.img_placeholder_7,12.888945,74.856276));
+         nearbyList.add(new NearbyPlacesModel("Bekal Fort","Bekal Fort, is the largest fort in Kerala, situated at Bekal village in Kasaragod district, North Kerala and it is 67 km from Mangalore spreading over 40 acres.",R.drawable.img_placeholder_8,12.3926134,75.0330579));
 
         mAdapter.notifyDataSetChanged();
         return rootView;
