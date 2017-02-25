@@ -30,7 +30,7 @@ public class PostsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static PostsFragment newInstance(){
+    public static PostsFragment newInstance() {
         PostsFragment fragment = new PostsFragment();
         return fragment;
     }
@@ -55,8 +55,8 @@ public class PostsFragment extends Fragment {
         myPostsRecycler.setItemAnimator(new DefaultItemAnimator());
         myPostsRecycler.setAdapter(myPostListAdapter);
 
-        myGroupList.add(new PostsModel("Ranipuram Trekking",R.drawable.ic_profile_pic));
-        myGroupList.add(new PostsModel("Mumbai tour",R.drawable.ic_profile_pic));
+        myGroupList.add(new PostsModel("Ranipuram Trekking", R.drawable.ic_profile_pic));
+        myGroupList.add(new PostsModel("Mumbai tour", R.drawable.ic_profile_pic));
 
         myPostListAdapter.notifyDataSetChanged();
 

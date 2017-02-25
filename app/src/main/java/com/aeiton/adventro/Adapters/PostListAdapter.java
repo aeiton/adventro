@@ -28,6 +28,35 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.MyView
     private FrameLayout content;
 
 
+    public PostListAdapter(List<PostsModel> myGroupList) {
+        this.myPostList = myGroupList;
+    }
+
+    @Override
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.row_my_groups_list, parent, false);
+
+        return new MyViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        final PostsModel groupModel = myPostList.get(position);
+
+        holder.image.setImageResource(groupModel.getProPic());
+        holder.title.setText(groupModel.getTitle());
+
+        if (position == myPostList.size() - 1) {
+            holder.margin.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return myPostList.size();
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -46,45 +75,11 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.MyView
             main.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    v.getContext().startActivity(new Intent(v.getContext(), EditTimeLine.class).putExtra("access",1));
+                    v.getContext().startActivity(new Intent(v.getContext(), EditTimeLine.class).putExtra("access", 1));
                 }
             });
 
         }
-    }
-
-
-    public PostListAdapter(List<PostsModel> myGroupList) {
-        this.myPostList = myGroupList;
-    }
-
-    @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_my_groups_list, parent, false);
-
-        return new MyViewHolder(itemView);
-    }
-
-
-
-    @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        final PostsModel groupModel = myPostList.get(position);
-
-        holder.image.setImageResource(groupModel.getProPic());
-        holder.title.setText(groupModel.getTitle());
-
-        if (position == myPostList.size()-1){
-            holder.margin.setVisibility(View.INVISIBLE);
-        }
-
-    }
-
-
-    @Override
-    public int getItemCount() {
-        return myPostList.size();
     }
 }
 

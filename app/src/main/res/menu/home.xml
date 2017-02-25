@@ -10,6 +10,6 @@
         android:id="@+id/action_create_page"
         android:orderInCategory="100"
         android:title="Create Page"
-        app:showAsAction="never" />
+        app:showAsAction="never"/>
 
 </menu>

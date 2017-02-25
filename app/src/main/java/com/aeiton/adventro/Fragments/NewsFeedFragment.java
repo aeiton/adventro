@@ -2,6 +2,7 @@ package com.aeiton.adventro.Fragments;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
@@ -15,23 +16,28 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.aeiton.adventro.Activity.RegistrationActivity;
 import com.aeiton.adventro.Adapters.NewsFeedAdapter;
 import com.aeiton.adventro.Adapters.NewsFeedModel;
 import com.aeiton.adventro.Adapters.TimeLineListAdapter;
+import com.aeiton.adventro.Constants;
 import com.aeiton.adventro.Model.FeedTimeLineModel;
+import com.aeiton.adventro.NetworkSingleton;
 import com.aeiton.adventro.R;
 import com.android.volley.AuthFailureError;
+
 import com.android.volley.DefaultRetryPolicy;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,15 +49,17 @@ import java.util.Map;
 public class NewsFeedFragment extends Fragment {
 
 
-
     RecyclerView newsFeed;
+    RecyclerView timeline;
     private NewsFeedAdapter mAdapter;
     private ArrayList<NewsFeedModel> feed = new ArrayList<>();
+
     NestedScrollView main_scroll;
     ProgressBar progress;
 
 
     RecyclerView timeline;
+
     private TimeLineListAdapter mtAdapter;
     private ArrayList<FeedTimeLineModel> timelineMOdel = new ArrayList<>();
 
@@ -59,11 +67,16 @@ public class NewsFeedFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static NewsFeedFragment newInstance(){
+    public static NewsFeedFragment newInstance() {
         NewsFeedFragment fragment = new NewsFeedFragment();
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sendData();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,7 +90,7 @@ public class NewsFeedFragment extends Fragment {
 
 
         mtAdapter = new TimeLineListAdapter(timelineMOdel);
-        RecyclerView.LayoutManager mhLayoutManager = new LinearLayoutManager(rootView.getContext(),LinearLayoutManager.HORIZONTAL,false) {
+        RecyclerView.LayoutManager mhLayoutManager = new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -139,9 +152,32 @@ public class NewsFeedFragment extends Fragment {
         feed.add(new NewsFeedModel(0,"Prajuwal B","St. mary's island","One of the must Visit island in Manglore region.", R.drawable.ic_profile_pic,R.drawable.img_placeholder_6,467,655,13.3795261,74.6718896));
         feed.add(new NewsFeedModel(2,"Musthaq Ahamad","Sahyadri College of engineering and management ",R.drawable.ic_propic_2,R.drawable.img_placeholder_map,467,655));
 
+
         mAdapter.notifyDataSetChanged();
 
+    private void sendData() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.ADD_NODE_TIMELINE, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("REsponse", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> pa
+                        = new HashMap<>();
+                pa.put("user_id", 24 + "");
+                pa.put("page", "" + 0);
+                return pa;
+            }
+        };
+
+        NetworkSingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
 
     }
 

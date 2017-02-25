@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#ffffff">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#ffffff"
+              android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#c0c0c0"
-        android:alpha="0.3"/>
+        android:alpha="0.3"
+        android:background="#c0c0c0"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,23 +28,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
+            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="Jhon Abraham"/>
+                android:text="Jhon Abraham"
+                android:textSize="15sp"/>
 
             <TextView
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#c0c0c0"
-                android:text="Sahyadri college of Enggineering"/>
+                android:text="Sahyadri college of Enggineering"
+                android:textColor="#c0c0c0"/>
 
         </LinearLayout>
 
@@ -51,40 +52,44 @@
             android:id="@+id/view_map"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:background="#ffffff"
             android:padding="10dp"
             android:scaleType="fitXY"
-            android:background="#ffffff"
             android:src="@drawable/ic_map_placeholder"
             android:tint="@color/colorPrimary"/>
     </LinearLayout>
-    
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:src="@drawable/img_placeholder_map"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_placeholder_map"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#c0c0c0"
-        android:alpha="0.3"/>
+        android:alpha="0.3"
+        android:background="#c0c0c0"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <ImageView
-            android:layout_margin="10dp"
-            android:layout_gravity="center_vertical"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:tint="#c0c0c0"
-            android:src="@drawable/ic_invite_tag"/>
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_invite_tag"
+            android:tint="#c0c0c0"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Travel collaboration Invite"
             android:padding="15dp"
+            android:text="Travel collaboration Invite"
             android:textColor="#c0c0c0"/>
 
     </LinearLayout>
@@ -94,9 +99,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_feed_invite_bg"
+        android:padding="20dp"
         android:text="join Adventure"
-        android:textColor="@color/colorPrimaryDark"
-        android:padding="20dp"/>
+        android:textColor="@color/colorPrimaryDark"/>
 
 
 </LinearLayout>

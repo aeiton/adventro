@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_post_details"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical"
-    tools:context=".Activity.RegistrationActivity">
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:id="@+id/activity_post_details"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:background="#ffffff"
+                                                 android:orientation="vertical"
+                                                 tools:context=".Activity.RegistrationActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -51,13 +51,13 @@
                         android:padding="5dp">
 
                         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/profile_image"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/ic_pro_pic_fake"
-                            app:civ_border_color="@color/colorPrimaryDark"
-                            app:civ_border_width="3dp" />
+                                                                      android:id="@+id/profile_image"
+                                                                      android:layout_width="120dp"
+                                                                      android:layout_height="120dp"
+                                                                      android:layout_marginTop="10dp"
+                                                                      android:src="@drawable/ic_pro_pic_fake"
+                                                                      app:civ_border_color="@color/colorPrimaryDark"
+                                                                      app:civ_border_width="3dp"/>
 
                         <ImageButton
                             android:id="@+id/btn_img_upload"
@@ -69,7 +69,7 @@
                             android:background="@drawable/green_circle"
                             android:padding="12dp"
                             android:scaleType="fitXY"
-                            android:src="@mipmap/camera" />
+                            android:src="@mipmap/camera"/>
 
 
                     </RelativeLayout>
@@ -88,7 +88,7 @@
                             android:layout_height="20dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/user_shape"
-                            android:tint="@color/colorPrimaryDark" />
+                            android:tint="@color/colorPrimaryDark"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
@@ -99,9 +99,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/edit_text_green_bg"
-                                android:hint="Full Name"
+                                android:hint="Full Name*"
                                 android:inputType="textPersonName"
-                                android:padding="10dp" />
+                                android:padding="10dp"/>
 
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
@@ -120,7 +120,7 @@
                             android:layout_height="20dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/emain_icon"
-                            android:tint="@color/colorPrimaryDark" />
+                            android:tint="@color/colorPrimaryDark"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                                 android:background="@drawable/edit_text_green_bg"
                                 android:hint="Email Address"
                                 android:inputType="textEmailAddress"
-                                android:padding="10dp" />
+                                android:padding="10dp"/>
 
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
@@ -152,21 +152,25 @@
                             android:layout_height="20dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/ic_phone_green"
-                            android:tint="@color/colorPrimaryDark" />
+                            android:tint="@color/colorPrimaryDark"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:focusable="false">
 
                             <EditText
                                 android:id="@+id/etxt_phone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/edit_text_green_bg"
+                                android:clickable="false"
+                                android:focusable="false"
                                 android:hint="Mobile Number"
                                 android:inputType="phone"
-                                android:maxLength="10"
-                                android:padding="10dp" />
+                                android:maxLength="13"
+                                android:padding="10dp"/>
 
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
@@ -184,7 +188,7 @@
                             android:layout_height="20dp"
                             android:layout_margin="8dp"
                             android:src="@mipmap/professiom_icon"
-                            android:tint="@color/colorPrimaryDark" />
+                            android:tint="@color/colorPrimaryDark"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -197,7 +201,7 @@
                                 android:paddingLeft="5dp"
                                 android:text="Profession"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:textSize="12sp" />
+                                android:textSize="12sp"/>
 
                             <Spinner
 
@@ -205,7 +209,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/edit_text_green_bg"
-                                android:padding="12dp" />
+                                android:padding="12dp"/>
                         </LinearLayout>
 
 
@@ -219,7 +223,7 @@
                         android:paddingTop="5dp"
                         android:text="Minimum 6 characters*"
                         android:textColor="#c0c0c0"
-                        android:textSize="13sp" />
+                        android:textSize="13sp"/>
 
 
                     <!--- Lawyer Part -->
@@ -233,7 +237,7 @@
                         android:layout_marginTop="10dp"
                         android:text="I Accept All the terms and conditions."
                         android:textColor="#575757"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"/>
 
                     <Button
                         android:id="@+id/register"
@@ -242,7 +246,7 @@
                         android:layout_marginTop="20dp"
                         android:background="@drawable/cyan_button"
                         android:text="REGISTER"
-                        android:textColor="#ffffff" />
+                        android:textColor="#ffffff"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -251,7 +255,7 @@
                         android:layout_marginTop="20dp"
                         android:text="Need help? Contact our customer care..."
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"/>
 
 
                 </LinearLayout>
@@ -275,7 +279,7 @@
                             android:gravity="center"
                             android:text="Registration"
                             android:textColor="#ffffff"
-                            android:textSize="30sp" />
+                            android:textSize="30sp"/>
 
                     </LinearLayout>
                 </RelativeLayout>

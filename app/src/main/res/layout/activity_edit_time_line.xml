@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_post_details"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Activity.EditTimeLine"
-    android:background="#eeeeee">
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:id="@+id/activity_post_details"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:background="#eeeeee"
+                                                 android:orientation="vertical"
+                                                 tools:context=".Activity.EditTimeLine">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -18,15 +18,15 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:popupTheme="@style/toolbar"
-            android:background="#ffffff"></android.support.v7.widget.Toolbar>
+            android:background="#ffffff"
+            app:popupTheme="@style/toolbar"></android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,54 +36,57 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/colorPrimary"
-                    android:layout_marginLeft="25dp"/>
+                    android:layout_marginLeft="25dp"
+                    android:background="@color/colorPrimary"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
-                    android:paddingLeft="18dp"
-                    android:orientation="horizontal">
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@drawable/green_circle"/>
 
                     <LinearLayout
-                        android:layout_marginLeft="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="horizontal"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="18dp"
+                        android:paddingTop="20dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <View
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/green_circle"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="20/27/2017  9:30"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Started from Destination"/>
+                            android:layout_marginLeft="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20/27/2017  9:30"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Started from Destination"/>
 
 
-                    </LinearLayout>
-
+                        </LinearLayout>
 
 
                     </LinearLayout>
 
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/recycler"></android.support.v7.widget.RecyclerView>
+                        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
                     <View
                         android:layout_width="match_parent"
@@ -100,8 +103,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:layout_behavior="@string/bottom_sheet_behavior">
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:layout_scrollFlags="scroll|enterAlways">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,9 +112,9 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -119,65 +122,65 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_profile_pic"/>
+
                 <EditText
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:padding="15dp"/>
 
                 <ImageButton
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_send"
-                    android:scaleType="fitXY"
-                    android:background="#ffffff"
                     android:layout_margin="10dp"
+                    android:background="#ffffff"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_send"
                     android:tint="@color/colorPrimaryDark"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#c0c0c0"
-                android:alpha="0.3"/>
+                android:alpha="0.3"
+                android:background="#c0c0c0"/>
 
             <LinearLayout
-                android:padding="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="15dp">
 
                 <ImageButton
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginRight="20dp"
-                    android:scaleType="fitXY"
                     android:background="#ffffff"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_menu_camera"
                     android:tint="#263638"/>
 
                 <ImageButton
                     android:layout_width="25dp"
-                    android:padding="1dp"
                     android:layout_height="25dp"
-                    android:scaleType="fitXY"
                     android:background="#ffffff"
+                    android:padding="1dp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_map_placeholder"
                     android:tint="#263638"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp"
-                    android:text="Current Location Goes here"
-                    android:layout_gravity="center_vertical"/>
+                    android:text="Current Location Goes here"/>
 
             </LinearLayout>
         </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
-
 
 
 </android.support.design.widget.CoordinatorLayout>

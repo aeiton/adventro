@@ -9,7 +9,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.aeiton.adventro.Model.FeedTimeLineModel;
 import com.aeiton.adventro.Model.TimeLineModel;
 import com.aeiton.adventro.R;
 
@@ -26,6 +25,35 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
     private FrameLayout content;
 
 
+    public TimeLineAdapter(List<TimeLineModel> timeLineList) {
+        this.timeLineList = timeLineList;
+    }
+
+    @Override
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.row_timeline_item, parent, false);
+
+        return new MyViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        final TimeLineModel timelineModel = timeLineList.get(position);
+
+        holder.propic.setImageResource(timelineModel.getProPic());
+        holder.location.setText(timelineModel.getLocation());
+        holder.time.setText(timelineModel.getTime());
+        holder.image.setImageResource(timelineModel.getImage());
+        holder.caption.setText(timelineModel.getCaption());
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return timeLineList.size();
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -49,41 +77,6 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
                 }
             });
         }
-    }
-
-
-    public TimeLineAdapter(List<TimeLineModel> timeLineList) {
-        this.timeLineList = timeLineList;
-    }
-
-    @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_timeline_item, parent, false);
-
-        return new MyViewHolder(itemView);
-    }
-
-
-
-    @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        final TimeLineModel timelineModel = timeLineList.get(position);
-
-        holder.propic.setImageResource(timelineModel.getProPic());
-        holder.location.setText(timelineModel.getLocation());
-        holder.time.setText(timelineModel.getTime());
-        holder.image.setImageResource(timelineModel.getImage());
-        holder.caption.setText(timelineModel.getCaption());
-
-
-
-    }
-
-
-    @Override
-    public int getItemCount() {
-        return timeLineList.size();
     }
 }
 

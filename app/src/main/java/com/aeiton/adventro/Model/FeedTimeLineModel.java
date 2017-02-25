@@ -9,11 +9,11 @@ public class FeedTimeLineModel {
     private String title;
     private int proPic;
 
-    public FeedTimeLineModel(){
+    public FeedTimeLineModel() {
 
     }
 
-    public FeedTimeLineModel(String title, int proPic){
+    public FeedTimeLineModel(String title, int proPic) {
 
         this.title = title;
         this.proPic = proPic;
@@ -24,12 +24,12 @@ public class FeedTimeLineModel {
         return proPic;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public void setProPic(int proPic) {
         this.proPic = proPic;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {

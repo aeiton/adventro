@@ -1,9 +1,6 @@
 package com.aeiton.adventro.Adapters;
 
-import android.content.Intent;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.aeiton.adventro.Activity.JournalView;
-import com.aeiton.adventro.Fragments.LocationFragment;
 import com.aeiton.adventro.R;
 
 import java.util.List;
@@ -29,75 +24,6 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private List<NewsFeedModel> feedList;
 
 
-
-    public class ViewHolder1 extends RecyclerView.ViewHolder {
-
-
-        private ImageView propic, image;
-        private TextView name, caption, like, comment, location;
-        ImageButton likeBtn;
-
-        public ViewHolder1(View view) {
-            super(view);
-
-            propic = (ImageView) itemView.findViewById(R.id.pro_pic);
-            image = (ImageView) itemView.findViewById(R.id.image);
-            name = (TextView) itemView.findViewById(R.id.user_name);
-            caption = (TextView) itemView.findViewById(R.id.caption);
-            location = (TextView) itemView.findViewById(R.id.location);
-            like = (TextView) itemView.findViewById(R.id.like_count);
-            comment = (TextView) itemView.findViewById(R.id.comment_count);
-            likeBtn = (ImageButton) itemView.findViewById(R.id.btn_like);
-
-
-
-        }
-    }
-
-    public class ViewHolder2 extends RecyclerView.ViewHolder {
-
-
-        private ImageView propic, image;
-        private TextView name, title, like, comment;
-        ImageButton likeBtn;
-
-
-        public ViewHolder2(View view) {
-            super(view);
-
-
-            propic = (ImageView) itemView.findViewById(R.id.pro_pic);
-            image = (ImageView) itemView.findViewById(R.id.image);
-            name = (TextView) itemView.findViewById(R.id.user_name);
-            title = (TextView) itemView.findViewById(R.id.title);
-            like = (TextView) itemView.findViewById(R.id.like_count);
-            comment = (TextView) itemView.findViewById(R.id.comment_count);
-            likeBtn = (ImageButton) itemView.findViewById(R.id.btn_like);
-
-        }
-    }
-
-    public class ViewHolder3 extends RecyclerView.ViewHolder {
-        public TextView name,title;
-        ImageView cover;
-        LinearLayout main_view;
-        private ImageView propic, image;
-
-        public ViewHolder3(View view) {
-            super(view);
-
-            cover = (ImageView) view.findViewById(R.id.image);
-            propic = (ImageView) itemView.findViewById(R.id.pro_pic);
-            image = (ImageView) itemView.findViewById(R.id.image);
-            name = (TextView) itemView.findViewById(R.id.user_name);
-
-
-
-
-        }
-    }
-
-
     public NewsFeedAdapter(List<NewsFeedModel> feedList) {
         this.feedList = feedList;
     }
@@ -106,14 +32,13 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
 
-
-        switch(viewType){
+        switch (viewType) {
 
             case 0:
                 View itemView = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.row_news_feed_item, parent, false);
 
-            return new ViewHolder1(itemView);
+                return new ViewHolder1(itemView);
 
             case 1:
                 View journalView = LayoutInflater.from(parent.getContext())
@@ -131,15 +56,12 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     }
 
-
-
-
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
-                final NewsFeedModel feedModel = feedList.get(position);
+        final NewsFeedModel feedModel = feedList.get(position);
 
-        switch (holder.getItemViewType()){
+        switch (holder.getItemViewType()) {
             case 0:
                 final ViewHolder1 vh1 = (ViewHolder1) holder;
 
@@ -148,14 +70,12 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 vh1.name.setText(feedModel.getName());
                 vh1.caption.setText(feedModel.getCaption());
                 vh1.location.setText(feedModel.getLocation());
-                vh1.like.setText(""+feedModel.getLike());
-                vh1.comment.setText(""+feedModel.getComment());
+                vh1.like.setText("" + feedModel.getLike());
+                vh1.comment.setText("" + feedModel.getComment());
 
-
-
-                if (feedModel.getLikeStatus()){
+                if (feedModel.getLikeStatus()) {
                     vh1.likeBtn.setImageResource(R.drawable.ic_like);
-                }else {
+                } else {
                     vh1.likeBtn.setImageResource(R.drawable.ic_liked);
                 }
 
@@ -169,7 +89,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                             vh1.likeBtn.setImageResource(R.drawable.ic_liked);
                             vh1.likeBtn.startAnimation(myAnim);
                             feedModel.unlikePost();
-                        }else {
+                        } else {
 
                             final Animation myAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.button_bounce);
                             vh1.likeBtn.setImageResource(R.drawable.ic_like);
@@ -188,19 +108,12 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 vh2.image.setImageResource(feedModel.getImg());
                 vh2.name.setText(feedModel.getName());
                 vh2.title.setText(feedModel.getTitle());
-                vh2.like.setText(""+feedModel.getLike());
-                vh2.comment.setText(""+feedModel.getComment());
+                vh2.like.setText("" + feedModel.getLike());
+                vh2.comment.setText("" + feedModel.getComment());
 
-                vh2.image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        v.getContext().startActivity(new Intent(v.getContext(), JournalView.class));
-                    }
-                });
-
-                if (feedModel.getLikeStatus()){
+                if (feedModel.getLikeStatus()) {
                     vh2.likeBtn.setImageResource(R.drawable.ic_like);
-                }else {
+                } else {
                     vh2.likeBtn.setImageResource(R.drawable.ic_liked);
                 }
 
@@ -214,7 +127,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                             vh2.likeBtn.setImageResource(R.drawable.ic_liked);
                             vh2.likeBtn.startAnimation(myAnim);
                             feedModel.unlikePost();
-                        }else {
+                        } else {
 
                             final Animation myAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.button_bounce);
                             vh2.likeBtn.setImageResource(R.drawable.ic_like);
@@ -235,19 +148,12 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 //                vh3..setText(feedModel.getLocation());
 
 
-
-
-
                 break;
 
         }
 
 
-
-
-
     }
-
 
     @Override
     public int getItemCount() {
@@ -255,10 +161,74 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public int getItemViewType(int position){
+    public int getItemViewType(int position) {
 
         int type = feedList.get(position).getType();
         return type;
+    }
+
+    public class ViewHolder1 extends RecyclerView.ViewHolder {
+
+
+        ImageButton likeBtn;
+        private ImageView propic, image;
+        private TextView name, caption, like, comment, location;
+
+        public ViewHolder1(View view) {
+            super(view);
+
+            propic = (ImageView) itemView.findViewById(R.id.pro_pic);
+            image = (ImageView) itemView.findViewById(R.id.image);
+            name = (TextView) itemView.findViewById(R.id.user_name);
+            caption = (TextView) itemView.findViewById(R.id.caption);
+            location = (TextView) itemView.findViewById(R.id.location);
+            like = (TextView) itemView.findViewById(R.id.like_count);
+            comment = (TextView) itemView.findViewById(R.id.comment_count);
+            likeBtn = (ImageButton) itemView.findViewById(R.id.btn_like);
+
+
+        }
+    }
+
+    public class ViewHolder2 extends RecyclerView.ViewHolder {
+
+
+        ImageButton likeBtn;
+        private ImageView propic, image;
+        private TextView name, title, like, comment;
+
+
+        public ViewHolder2(View view) {
+            super(view);
+
+
+            propic = (ImageView) itemView.findViewById(R.id.pro_pic);
+            image = (ImageView) itemView.findViewById(R.id.image);
+            name = (TextView) itemView.findViewById(R.id.user_name);
+            title = (TextView) itemView.findViewById(R.id.title);
+            like = (TextView) itemView.findViewById(R.id.like_count);
+            comment = (TextView) itemView.findViewById(R.id.comment_count);
+            likeBtn = (ImageButton) itemView.findViewById(R.id.btn_like);
+
+        }
+    }
+
+    public class ViewHolder3 extends RecyclerView.ViewHolder {
+        public TextView name, title;
+        ImageView cover;
+        LinearLayout main_view;
+        private ImageView propic, image;
+
+        public ViewHolder3(View view) {
+            super(view);
+
+            cover = (ImageView) view.findViewById(R.id.image);
+            propic = (ImageView) itemView.findViewById(R.id.pro_pic);
+            image = (ImageView) itemView.findViewById(R.id.image);
+            name = (TextView) itemView.findViewById(R.id.user_name);
+
+
+        }
     }
 }
 
